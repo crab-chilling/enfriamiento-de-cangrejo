@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Card Form</title>
+</head>
+<body>
+  <form th:action="@{/card/create}" th:object="${cardForm}" method="POST">
+    <fieldset>
+      <legend>Create your card</legend>
+      <div>
+        <label for="form-name">Name</label>
+        <div>
+          <input id="form-name" type="text" placeholder="Steven Arnaud" th:field="*{name}">
+        </div>
+      </div>
+      <div>
+        <label for="form-description">Description</label>
+        <div>
+          <input id="form-description" type="text" placeholder="Ce bg !" th:field="*{description}">
+        </div>
+      </div>
+      <div>
+        <label for="form-image">Image URL</label>
+        <div>
+          <input id="form-image" type="text" placeholder="http://steven.arnaud/img.jpg" th:field="*{imgUrl}">
+        </div>
+      </div>
+      <div>
+        <label for="form-family">Family</label>
+        <div>
+          <input id="form-family" type="text" placeholder="Crab" th:field="*{family}">
+        </div>
+      </div>
+      <div>
+        <label for="form-affinity">Affinity</label>
+        <div>
+          <input id="form-affinity" type="text" placeholder="Other Crab" th:field="*{affinity}">
+        </div>
+      </div>
+      <div>
+        <label for="form-hp">HP</label>
+        <div>
+          <input id="form-hp" type="range" min="1" max="50" value="10" step="1" th:field="*{hp}">
+        </div>
+      </div>
+      <div>
+        <label for="form-energy">Energy</label>
+        <div>
+          <input id="form-energy" type="range" min="1" max="50" value="10" step="1" th:field="*{energy}">
+        </div>
+      </div>
+      <div>
+        <label for="form-attack">Attack</label>
+        <div>
+          <input id="form-attack" type="range" min="1" max="50" value="10" step="1" th:field="*{attack}">
+        </div>
+      </div>
+      <div>
+        <label for="form-defence">Defence</label>
+        <div>
+          <input id="form-defence" type="range" min="1" max="50" value="10" step="1" th:field="*{defence}">
+        </div>
+      </div>
+      <div>
+        <input type="submit" value="Create" />
+      </div>
+    </fieldset>
+  </form>
+</body>
+</html>
