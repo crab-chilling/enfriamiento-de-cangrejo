@@ -1,13 +1,12 @@
-package cpe.asi.CardForge.entity;
+package cpe.asi.cardforge.dto;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
+import java.io.Serializable;
+import java.util.List;
+
 @Data
-public class User {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+public class UserDTO implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
@@ -15,6 +14,5 @@ public class User {
     private String emailAddress;
     private String password;
     private float wallet;
-    @OneToOne
-    private Deck deck;
+    private List<CardDTO> cards;
 }

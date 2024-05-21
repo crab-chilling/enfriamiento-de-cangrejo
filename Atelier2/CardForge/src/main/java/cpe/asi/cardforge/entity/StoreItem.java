@@ -1,18 +1,21 @@
-package cpe.asi.CardForge.entity;
+package cpe.asi.cardforge.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
 
-@Entity
 @Data
-public class Deck {
+@Entity
+public class StoreItem {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    @OneToOne
-    private User user;
-    @OneToMany(mappedBy = "deck")
+
+    @OneToMany
+    @PrimaryKeyJoinColumn(name = "id")
     private List<Card> cards;
+
+    @Column(name = "price", nullable = false)
+    private float price;
 }
