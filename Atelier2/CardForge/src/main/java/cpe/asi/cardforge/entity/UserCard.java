@@ -12,7 +12,7 @@ public class UserCard {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Kuser user;
 
     @OneToOne
     @JoinColumn(name = "card_id")

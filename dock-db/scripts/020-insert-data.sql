@@ -35,3 +35,6 @@ INSERT INTO Card (name, description, family, affinity, image_url, miniature_url,
 ('Holy Priest', 'A priest with holy powers', 'Priest', 'Light', 'holy_priest.png', 'holy_priest_mini.png', 10, 140, 65, 50),
 ('Forest Guardian', 'A guardian of the forest', 'Guardian', 'Nature', 'forest_guardian.png', 'forest_guardian_mini.png', 7, 90, 35, 40),
 ('Glacial Titan', 'A titan from the glaciers', 'Titan', 'Ice', 'glacial_titan.png', 'glacial_titan_mini.png', 12, 170, 75, 70);
+
+INSERT INTO kuser (first_name, last_name, user_name, email_address, password, wallet, role) 
+values('sa', 'sa', 'admin', 'sa@sa.fr', 'admin', '1.0', 'ADMIN');
