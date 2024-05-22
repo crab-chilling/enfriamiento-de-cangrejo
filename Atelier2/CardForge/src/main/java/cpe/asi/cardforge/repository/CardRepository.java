@@ -10,7 +10,4 @@ import java.util.List;
 
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
-
-    @Query("select c from Card c where c.deck.user = :user")
-    List<Card> getCardByUser(User user);
 }
