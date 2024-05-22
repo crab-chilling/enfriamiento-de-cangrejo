@@ -1,6 +1,6 @@
 package cpe.asi.cardforge.repository;
 
-import cpe.asi.cardforge.entity.User;
+import cpe.asi.cardforge.entity.Kuser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<Kuser, Long> {
 
-    Optional<User> findByEmailAddress(String emailAddress);
+    Optional<Kuser> findByEmailAddress(String emailAddress);
 
-    @Query("select u from User u where u.userName = '%:userName%'")
-    List<User> findByUserNameLikeIgnoreCase(String userName);
+    @Query("select u from Kuser u where u.userName = '%:userName%'")
+    List<Kuser> findByUserNameLikeIgnoreCase(String userName);
 
-    Optional<User> findByUserName(String userName);
+    Optional<Kuser> findByUserName(String userName);
 }
