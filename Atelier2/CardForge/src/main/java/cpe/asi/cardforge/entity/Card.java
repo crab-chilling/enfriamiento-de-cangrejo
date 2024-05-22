@@ -1,10 +1,14 @@
 package cpe.asi.cardforge.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+@Entity(name = "card")
+@NoArgsConstructor
+@AllArgsConstructor()
 public class Card {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -29,10 +33,4 @@ public class Card {
     private int attack;
     @Column(name = "defence")
     private int defence;
-    @Column(name = "price")
-    private float price;
-
-    @ManyToOne
-    @MapKey(name = "id")
-    private UserCard deck;
 }

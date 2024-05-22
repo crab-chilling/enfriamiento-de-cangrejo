@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@Entity
+@Entity(name = "store_item")
 public class StoreItem {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
