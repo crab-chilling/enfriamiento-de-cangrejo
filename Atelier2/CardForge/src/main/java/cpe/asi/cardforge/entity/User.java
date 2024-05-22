@@ -25,6 +25,8 @@ public class User {
     private String password;
     @Column(name = "wallet")
     private float wallet;
+    @Column(name = "role")
+    private String role;
 
     @OneToMany
     @JoinColumn(name = "card_id", referencedColumnName = "id")
