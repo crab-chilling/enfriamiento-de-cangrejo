@@ -6,7 +6,7 @@ services:
         image: card-db
         build: ./dock-db
         ports:
-            - "5432:5433"
+            - "5432:5432"
         volumes:
             - card-db-data:/var/lib/postgresql/data
         env_file:

@@ -30,9 +30,9 @@ public class WebSecurityConfig {
     public DataSource dataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
-        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/card_game");
-        driverManagerDataSource.setUsername("sa");
-        driverManagerDataSource.setPassword("sa");
+        driverManagerDataSource.setUrl(System.getProperty("conf.database.url") + System.getProperty("conf.database.dbName"));
+        driverManagerDataSource.setUsername(System.getProperty("conf.database.username"));
+        driverManagerDataSource.setPassword(System.getProperty("conf.database.password"));
 
         return driverManagerDataSource;
     }
