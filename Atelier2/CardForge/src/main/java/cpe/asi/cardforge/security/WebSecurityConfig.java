@@ -36,6 +36,7 @@ public class WebSecurityConfig {
                     .httpBasic(Customizer.withDefaults())
                     .formLogin(form -> form.loginPage("/login").permitAll());
 
+
             return httpSecurity.build();
     }
 
