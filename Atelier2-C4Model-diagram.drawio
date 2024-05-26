@@ -1,0 +1,443 @@
+<mxfile host="app.diagrams.net" modified="2024-05-26T18:47:19.148Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0" etag="Bak4WyZE2_KMS7acdIMT" version="24.4.8" type="device">
+  <diagram name="Page-1" id="S4BePfmB1y045cD9m4js">
+    <mxGraphModel dx="2049" dy="4106" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3000" pageHeight="3000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-27" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="800" width="870" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-50" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeColor=#FF6666;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="1090" width="740" height="445" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-26" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="221" y="200" width="489" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-8" value="&lt;div&gt;[System Context] Card Store System&lt;/div&gt;&lt;div&gt;The system context diagram of the Card Store System&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="231.5" y="700" width="349" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-13" target="pSPQVaGW6Lw5AcyymQ0v-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-13" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="291" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-14" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="445.5" y="240" width="51" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-15" value="&lt;div&gt;Player&lt;/div&gt;&lt;div&gt;[Person]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;A player who purchases and sells cards&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="410" y="326" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-17" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="500" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-18" value="&lt;div&gt;Card Store System&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Software System]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows customer to create an account, view information about their cards and buy or sell cards&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="411" y="545" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-21" value="Creates account, views all cards,&amp;nbsp; possessed cards, and purchase or sell cards" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="396" y="411" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-28" value="&lt;div&gt;[Container] Card Store System&lt;br&gt;&lt;/div&gt;&lt;div&gt;The container diagram of the Card Store System&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1554" width="349" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-30" target="pSPQVaGW6Lw5AcyymQ0v-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-30" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1318" y="881" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-31" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="1353.5" y="830" width="51" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-32" value="&lt;div&gt;Player&lt;/div&gt;&lt;div&gt;[Person]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;A player who purchases and sells cards&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1318" y="916" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-36" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-17" target="pSPQVaGW6Lw5AcyymQ0v-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1020" y="810" as="sourcePoint" />
+            <mxPoint x="1030" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-39" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1307.5" y="1109" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-40" target="pSPQVaGW6Lw5AcyymQ0v-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-40" value="&lt;div&gt;Web Application&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Container : Next.js]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides all of the store functionnalities to players via their web browser&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1307.5" y="1109" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-41" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1308.5" y="1330" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-42" value="&lt;div&gt;API Application&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Container : Java and Spring Boot]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides store&#39;s functionnalities via a RESTful API&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1307.5" y="1330" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-45" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="860" y="1315" width="140" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-49" value="&lt;div&gt;Database&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Container : PostgresSQL]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Stores card collection, player cards information, hashed authentication credentials&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="860" y="1345" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-51" value="&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#ff8080&quot;&gt;Card Store System&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#ff8080&quot;&gt;[Software System] &lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="840.5" y="1495" width="349" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-53" value="&lt;div&gt;Creates account, views all cards,&amp;nbsp; possessed cards, and purchase or sell cards using&amp;nbsp;&lt;/div&gt;&lt;div&gt;[HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="1000" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-56" value="&lt;div&gt;Makes API calls to&lt;/div&gt;&lt;div&gt;[JSON/HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1304.5" y="1250" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1.032;entryY=0.371;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-42" target="pSPQVaGW6Lw5AcyymQ0v-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-57" value="&lt;div&gt;Reads from and writes to&lt;br&gt;&lt;/div&gt;&lt;div&gt;[SQL/TCP]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="1360" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-100" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="1680" width="1160" height="1210" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-101" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeColor=#FF6666;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="1896" width="1110" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-102" value="&lt;div&gt;[Component] Card Store System - API Application&lt;br&gt;&lt;/div&gt;&lt;div&gt;The component diagram of the API Application&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="2850" width="349" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-107" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2270" y="1710" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-157" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-109" target="pSPQVaGW6Lw5AcyymQ0v-147">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-158" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-109" target="pSPQVaGW6Lw5AcyymQ0v-146">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-159" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-109" target="pSPQVaGW6Lw5AcyymQ0v-143">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-109" value="&lt;div&gt;Web Application&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Container : Next.js]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides all of the store functionnalities to players via their web browser&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2272.5" y="1710" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-112" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="2270" y="2709" width="140" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-113" value="&lt;div&gt;Database&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Container : PostgresSQL]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Stores card collection, player cards information, hashed authentication credentials&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2270" y="2739" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-114" value="&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#ff8080&quot;&gt;API Application&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#ff8080&quot;&gt;[Container] &lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1800.5" y="2607" width="349" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-116" value="&lt;div&gt;Makes API calls to&lt;/div&gt;&lt;div&gt;[JSON/HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2688" y="1850" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-120" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-42" target="pSPQVaGW6Lw5AcyymQ0v-100">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2210" y="1680" as="sourcePoint" />
+            <mxPoint x="2260" y="1630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-121" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="-710" width="1180" height="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-122" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeColor=#FF6666;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="1800.5" y="-390" width="1119.5" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-123" value="&lt;div&gt;[Component] Card Store System - Web Application&lt;br&gt;&lt;/div&gt;&lt;div&gt;The component diagram for the Web Application&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="614" width="349" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-131" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2292" y="436" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-132" value="&lt;div&gt;API Application&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Container : Java and Spring Boot]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides store&#39;s functionnalities via a RESTful API&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2291" y="436" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-135" value="&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#ff8080&quot;&gt;Web Application&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#ff8080&quot;&gt;[Container] &lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1811" y="280" width="349" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-140" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="pSPQVaGW6Lw5AcyymQ0v-121">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1447.5" y="1109" as="sourcePoint" />
+            <mxPoint x="1759.5" y="1339" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-143" target="pSPQVaGW6Lw5AcyymQ0v-151">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-143" value="&lt;div&gt;Card Controller&lt;/div&gt;&lt;div&gt;[Component : Spring Rest Controller]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players to view cards and their information&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="1930" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-146" target="pSPQVaGW6Lw5AcyymQ0v-152">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-146" value="&lt;div&gt;User Controller&lt;/div&gt;&lt;div&gt;[Component : Spring Rest Controller]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players to create an acount, authenticate and view other players&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2272.5" y="1930" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-147" target="pSPQVaGW6Lw5AcyymQ0v-153">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-169" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-153" target="pSPQVaGW6Lw5AcyymQ0v-154">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2760" y="2360" />
+              <mxPoint x="1928" y="2360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-170" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-153" target="pSPQVaGW6Lw5AcyymQ0v-156">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2760" y="2360" />
+              <mxPoint x="2758" y="2360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-171" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-168" target="pSPQVaGW6Lw5AcyymQ0v-155">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2590" y="1990" as="targetPoint" />
+            <mxPoint x="2760" y="2290" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="2340" y="2360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-147" value="&lt;div&gt;Store Item Controller&lt;/div&gt;&lt;div&gt;[Component : Spring Rest Controller]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players to view all store items, purchase and sell cards&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="1930" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-230" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-151" target="pSPQVaGW6Lw5AcyymQ0v-154">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1866" y="2330" />
+              <mxPoint x="1866" y="2330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-151" value="&lt;div&gt;Card Service&lt;/div&gt;&lt;div&gt;[Component : Spring Service]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides functionnality to add or delete card, retrieve all cards or a specific one&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="2170" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-233" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-152" target="pSPQVaGW6Lw5AcyymQ0v-155">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2278" y="2330" />
+              <mxPoint x="2278" y="2330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-152" value="&lt;div&gt;User Service&lt;/div&gt;&lt;div&gt;[Component : Spring Service]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides functionnality to register, sign in, view all users or a specific one&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2273.5" y="2170" width="139.5" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-153" value="&lt;div&gt;Store Item Service&lt;/div&gt;&lt;div&gt;[Component : Spring Service]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides functionnality to view all store items, purchase or sell cards&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2689.5" y="2170" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-154" value="&lt;div&gt;Card Repository&lt;/div&gt;&lt;div&gt;[Component : Spring Repository]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Repository class for Card domain objects&lt;/div&gt;&lt;div&gt;All method names are compliant with Spring Data naming conventions so this interface can easily be extended&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1805" y="2420" width="245" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-155" value="&lt;div&gt;User Repository&lt;/div&gt;&lt;div&gt;[Component : Spring Repository]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;Repository class for User domain objects&lt;/div&gt;All method names are compliant with Spring Data naming conventions so this interface can easily be extended&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2215" y="2420" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-156" value="&lt;div&gt;Store Item Repository&lt;/div&gt;&lt;div&gt;[Component : Spring Repository]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;Repository class for Store Item domain objects&lt;/div&gt;All method names are compliant with Spring Data naming conventions so this interface can easily be extended&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2637.5" y="2420" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-160" value="&lt;div&gt;Makes API calls to&lt;/div&gt;&lt;div&gt;[JSON/HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2270.5" y="1850" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-161" value="&lt;div&gt;Makes API calls to&lt;/div&gt;&lt;div&gt;[JSON/HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="1850" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-162" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1883" y="2100" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-166" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2295.5" y="2100" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-172" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2713" y="2100" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-174" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1847" y="2317" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-177" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2258" y="2314" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-179" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-154" target="pSPQVaGW6Lw5AcyymQ0v-112">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1927" y="2600" />
+              <mxPoint x="2340" y="2600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-180" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-155" target="pSPQVaGW6Lw5AcyymQ0v-112">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-181" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-156" target="pSPQVaGW6Lw5AcyymQ0v-112">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2757" y="2600" />
+              <mxPoint x="2340" y="2600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-118" value="&lt;div&gt;Reads from and writes to&lt;br&gt;&lt;/div&gt;&lt;div&gt;[JDBC]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2266" y="2620" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-219" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-182" target="pSPQVaGW6Lw5AcyymQ0v-191">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-221" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-182" target="pSPQVaGW6Lw5AcyymQ0v-190">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-222" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-182" target="pSPQVaGW6Lw5AcyymQ0v-192">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-182" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="-629" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-183" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="2335.5" y="-680" width="51" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-218" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-184" target="pSPQVaGW6Lw5AcyymQ0v-186">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-184" value="&lt;div&gt;Player&lt;/div&gt;&lt;div&gt;[Person]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;A player who purchases and sells cards&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="-594" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-185" value="&lt;div&gt;Views user cards&lt;/div&gt;&lt;div&gt;[HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2288" y="-510" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-194" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-186" target="pSPQVaGW6Lw5AcyymQ0v-187">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-195" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-186" target="pSPQVaGW6Lw5AcyymQ0v-189">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1910" y="70" />
+              <mxPoint x="2360" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-186" value="&lt;div&gt;Purchase View&lt;/div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players to purchase cards&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="-360" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-207" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-187" target="pSPQVaGW6Lw5AcyymQ0v-132">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1909" y="300" />
+              <mxPoint x="2360" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-187" value="Market Request Helper&lt;div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides functionnality to request API Application&#39;s market endpoints&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1839" y="130" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-210" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-188">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2360" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2708" y="300" />
+              <mxPoint x="2360" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-188" value="&lt;div&gt;User Request Helper&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides functionnality to request API Application&#39;s user endpoints&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2637.5" y="130" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-209" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-189" target="pSPQVaGW6Lw5AcyymQ0v-132">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-189" value="&lt;div&gt;Card Request Helper&lt;br&gt;&lt;/div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides functionnality to request API Application&#39;s card endpoints&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2290" y="130" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-190" value="&lt;div&gt;Collection View&lt;/div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players to view their collection&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2288" y="-360" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-196" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-191" target="pSPQVaGW6Lw5AcyymQ0v-187">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2145" y="70" />
+              <mxPoint x="1909" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-191" value="&lt;div&gt;Sell View&lt;/div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players to sell cards&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2075" y="-360" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-205" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-192">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2710" y="130" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2590" y="-60" />
+              <mxPoint x="2711" y="-60" />
+              <mxPoint x="2711" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-192" value="&lt;div&gt;Register View&lt;/div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players create an account&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="-360" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-204" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-193" target="pSPQVaGW6Lw5AcyymQ0v-188">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2820" y="-60" />
+              <mxPoint x="2710" y="-60" />
+              <mxPoint x="2710" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-193" value="&lt;div&gt;Login View&lt;/div&gt;&lt;div&gt;[Component : Next.js file]&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows players sign in&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2750" y="-360" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-197" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1863" y="-80" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-198" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2098" y="-80" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-201" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.828;entryY=-0.014;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-190" target="pSPQVaGW6Lw5AcyymQ0v-189">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-200" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2334" y="-80" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-137" value="&lt;div&gt;Makes API calls to&lt;/div&gt;&lt;div&gt;[JSON/HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2288" y="356" width="144" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-211" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2660.5" y="-80" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-214" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2313.25" y="280" width="94" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-223" value="&lt;div&gt;&lt;div&gt;Creates account&lt;/div&gt;&lt;/div&gt;&lt;div&gt;[HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="-510" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-225" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="pSPQVaGW6Lw5AcyymQ0v-182" target="pSPQVaGW6Lw5AcyymQ0v-193">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2420" y="-579" as="sourcePoint" />
+            <mxPoint x="2820" y="-360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-224" value="&lt;div&gt;Signs in&lt;br&gt;&lt;/div&gt;&lt;div&gt;[HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2746" y="-510" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-226" value="&lt;div&gt;Sells cards &lt;br&gt;&lt;/div&gt;&lt;div&gt;[HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2075" y="-510" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-227" value="&lt;div&gt;Purchases cards&lt;br&gt;&lt;/div&gt;&lt;div&gt;[HTTPS]&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="-510" width="144" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-238" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" target="pSPQVaGW6Lw5AcyymQ0v-168">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2340" y="2420" as="targetPoint" />
+            <mxPoint x="2760" y="2290" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="2760" y="2360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pSPQVaGW6Lw5AcyymQ0v-168" value="Uses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2710.5" y="2344" width="94" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
