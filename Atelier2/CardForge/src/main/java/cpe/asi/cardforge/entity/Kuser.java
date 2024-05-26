@@ -28,7 +28,11 @@ public class Kuser {
     @Column(name = "role")
     private String role;
 
-    @OneToMany
-    @JoinColumn(name = "card_id", referencedColumnName = "id")
-    private List<UserCard> deck;
+    @ManyToMany
+    @JoinTable(
+            name = "user_card",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "card_id")
+    )
+    private List<Card> cards;
 }

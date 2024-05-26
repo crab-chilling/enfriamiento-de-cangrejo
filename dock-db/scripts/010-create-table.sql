@@ -32,8 +32,10 @@ CREATE TABLE user_card (
 );
 
 CREATE TABLE store_item (
-    store_item_id BIGINT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     card_id BIGINT,
+    user_id BIGINT,
     price FLOAT NOT NULL,
-    FOREIGN KEY (card_id) REFERENCES card(id)
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES kuser(id),
+    CONSTRAINT fk_card_id FOREIGN KEY (card_id) REFERENCES card(id)
 );
