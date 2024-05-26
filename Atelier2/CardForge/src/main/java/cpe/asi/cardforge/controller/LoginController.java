@@ -1,6 +1,8 @@
 package cpe.asi.cardforge.controller;
 
 import cpe.asi.cardforge.entity.Kuser;
+import cpe.asi.cardforge.security.SecurityConstants;
+import cpe.asi.cardforge.security.UserCache;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.TextCodec;
@@ -18,12 +20,13 @@ import java.util.Date;
 @RestController
 @Slf4j
 public class LoginController {
-    private static final long EXPIRATION_TIME = 10L;
-    private static final String SECRET = "TEST";
     private AuthenticationManager authenticationManager;
+    private UserCache userCache;
 
     LoginController(AuthenticationManager authenticationManager){
         this.authenticationManager = authenticationManager;
+        userCache = new UserCache();
+        userCache.createCache(1000);
     }
 
 
@@ -40,10 +43,11 @@ public class LoginController {
                     kuser.getFirstName() +
                     kuser.getLastName() +
                     kuser.getEmailAddress())
-                    .setExpiration(new Date(System.currentTimeMillis()+EXPIRATION_TIME))
-                    .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.decode(SECRET))
+                    .setExpiration(new Date(System.currentTimeMillis()+ SecurityConstants.EXPIRATION_TIME))
+                    .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.decode(SecurityConstants.SECRET))
                     .claim("roles", kuser.getRole())
                     .compact();
+        userCache.getCache().put(kuser.getUserName(), jwt);
             return ResponseEntity.ok(jwt);
         }
         return new ResponseEntity<String>("unauthorized", HttpStatus.UNAUTHORIZED);
