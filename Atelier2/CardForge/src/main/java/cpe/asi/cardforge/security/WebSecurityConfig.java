@@ -38,9 +38,10 @@ public class WebSecurityConfig {
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-            httpSecurity.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
+            httpSecurity.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/card/**").authenticated())
                     .httpBasic(Customizer.withDefaults())
-                    .formLogin(Customizer.withDefaults());
+                    .formLogin(form -> form.loginPage("/login").permitAll());
+
 
             return httpSecurity.build();
     }
