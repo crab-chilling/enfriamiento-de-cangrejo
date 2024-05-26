@@ -2,13 +2,11 @@ package cpe.asi.cardforge.controller;
 
 import cpe.asi.cardforge.entity.Kuser;
 import cpe.asi.cardforge.security.SecurityConstants;
-import cpe.asi.cardforge.security.UserCache;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.TextCodec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,12 +19,9 @@ import java.util.Date;
 @Slf4j
 public class LoginController {
     private AuthenticationManager authenticationManager;
-    private UserCache userCache;
 
     LoginController(AuthenticationManager authenticationManager){
         this.authenticationManager = authenticationManager;
-        userCache = new UserCache();
-        userCache.createCache(1000);
     }
 
 
@@ -37,7 +32,8 @@ public class LoginController {
         Authentication authenticationResponse = authenticationManager.authenticate(authenticationRequest);
 
         if(authenticationResponse.isAuthenticated()){
-            String jwt = Jwts.builder().setSubject(kuser.getUserName() +
+            String jwt = Jwts.builder().setSubject(kuser.getId() +
+                    kuser.getUserName() +
                     kuser.getPassword() +
                     kuser.getRole() +
                     kuser.getFirstName() +
@@ -47,7 +43,6 @@ public class LoginController {
                     .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.decode(SecurityConstants.SECRET))
                     .claim("roles", kuser.getRole())
                     .compact();
-        userCache.getCache().put(kuser.getUserName(), jwt);
             return ResponseEntity.ok(jwt);
         }
         return new ResponseEntity<String>("unauthorized", HttpStatus.UNAUTHORIZED);

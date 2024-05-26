@@ -32,14 +32,9 @@ public class WebSecurityConfig {
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-<<<<<<< HEAD
-            httpSecurity.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
-=======
             httpSecurity.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/card/**").authenticated())
->>>>>>> bb32e3c (feat/jwt : JWT return from login GET request)
                     .httpBasic(Customizer.withDefaults())
                     .formLogin(form -> form.loginPage("/login").permitAll());
-
 
             return httpSecurity.build();
     }

@@ -9,10 +9,13 @@ import cpe.asi.cardforge.error.NotFoundException;
 import cpe.asi.cardforge.repository.CardRepository;
 import cpe.asi.cardforge.repository.StoreItemRepository;
 import cpe.asi.cardforge.repository.UserRepository;
+import cpe.asi.cardforge.security.JwtUtils;
 import cpe.asi.cardforge.service.StoreItemService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,14 +47,16 @@ public class StoreItemController {
     }
 
     @PostMapping("/purchase/{id}")
-    public StoreItemDTO purchase(@PathVariable Long id) {
+    public StoreItemDTO purchase(@RequestHeader(name="Authorization") String token, @PathVariable Long id) throws IOException {
         log.info("Purchasing store item");
         Optional<StoreItem> optItem = storeItemRepository.findById(id);
         if (optItem.isEmpty()) {
             throw new NotFoundException("Store item not found");
         }
 
-        Long idBuyer = 1L;
+        String[] chunks = token.split("\\.");
+        String base64EncodedBody = chunks[1];
+        Long idBuyer = JwtUtils.getJwtIdFromBody(base64EncodedBody, new Base64(true));
         Optional<Kuser> optBuyer = userRepository.findById(idBuyer);
 
         if (optBuyer.isEmpty()) {
@@ -76,7 +81,7 @@ public class StoreItemController {
     }
 
     @PostMapping("/sell/{price}")
-    public StoreItemDTO sell(@RequestBody CardDTO cardDTO, @PathVariable float price) {
+    public StoreItemDTO sell(@RequestHeader(name="Authorization") String token, @RequestBody CardDTO cardDTO, @PathVariable float price) throws IOException {
         log.info("Selling store item");
         Optional<Card> optCard = cardRepository.findById(cardDTO.getId());
 
@@ -84,7 +89,9 @@ public class StoreItemController {
             throw new NotFoundException("Card not found");
         }
 
-        Long idSeller = 1L;
+        String[] chunks = token.split("\\.");
+        String base64EncodedBody = chunks[1];
+        Long idSeller = JwtUtils.getJwtIdFromBody(base64EncodedBody, new Base64(true));
         Optional<Kuser> optSeller = userRepository.findById(idSeller);
 
         if (optSeller.isEmpty()) {
