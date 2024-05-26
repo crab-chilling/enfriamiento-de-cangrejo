@@ -1,19 +1,12 @@
 package cpe.asi.cardforge.controller;
 
 import cpe.asi.cardforge.entity.Kuser;
-<<<<<<< HEAD
 import cpe.asi.cardforge.security.SecurityConstants;
-=======
->>>>>>> 95dae6a (feat/jwt : JWT return from login GET request)
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.TextCodec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-<<<<<<< HEAD
-=======
-import org.springframework.http.HttpStatusCode;
->>>>>>> 95dae6a (feat/jwt : JWT return from login GET request)
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
