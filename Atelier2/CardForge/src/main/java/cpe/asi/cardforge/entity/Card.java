@@ -11,12 +11,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor()
 public class Card {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "family")
     private String family;
     @Column(name = "affinity")
