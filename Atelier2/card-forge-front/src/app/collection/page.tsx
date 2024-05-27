@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { IUser, IUserCard } from "@/types/Card";
+import { ICard } from "@/types/Card";
 import { Container } from "@mui/material";
 import OfflineBoltRoundedIcon from "@mui/icons-material/OfflineBoltRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
@@ -17,25 +17,21 @@ import { getUserCardCollection } from "@/api/card";
 import { useAuth } from "@/providers/AuthProvider";
 
 export default function Collection() {
-  const { user } = useAuth();
-  const [cardData, setCardData] = useState<IUserCard[]>([]);
+  const { userContext } = useAuth();
+  const [cardData, setCardData] = useState<ICard[]>([]);
 
-  const getCardData = () => {
-    if (user) {
-      getUserCardCollection(user.id)
-        .then((response: IUser | undefined) => {
+  useEffect(() => {
+    if (userContext) {
+      getUserCardCollection()
+        .then((response: ICard[] | undefined) => {
           if (response) {
-            setCardData(response.cards);
+            setCardData(response);
           }
         })
         .catch((error) => {
           console.error(error);
         });
     }
-  };
-
-  useEffect(() => {
-    getCardData();
   }, []);
 
   return (

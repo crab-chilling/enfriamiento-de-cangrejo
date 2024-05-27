@@ -1,15 +1,4 @@
-export interface IUser {
-  id: number;
-  firstName: string;
-  lastName: string;
-  userName: string;
-  emailAddress: string;
-  password: string;
-  wallet: number;
-  cards: IMarketCard[];
-}
-
-export interface IUserCard {
+export interface ICard {
   id: number;
   name: string;
   description: string;
@@ -21,8 +10,4 @@ export interface IUserCard {
   health: number;
   attack: number;
   defence: number;
-}
-
-export interface IMarketCard extends IUserCard {
-  price: number;
 }

@@ -1,19 +1,12 @@
-export interface IUserLoginResponse {
+import { ICard } from "./Card";
+
+export interface IUser {
+  id: number;
   firstName: string;
   lastName: string;
-  username: string;
+  userName: string;
   emailAddress: string;
+  password: string;
   wallet: number;
-}
-
-export interface IUserLoginBody {
-  emailAddress: string;
-  password: string;
-}
-
-export interface IUserRegisterBody {
-  firstName: string;
-  lastName: string;
-  emailAddress: string;
-  password: string;
+  cards: ICard[] | null;
 }

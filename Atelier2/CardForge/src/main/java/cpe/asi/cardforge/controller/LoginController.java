@@ -38,20 +38,13 @@ public class LoginController {
 
         if(authenticationResponse.isAuthenticated()){
             Kuser authenticatedUser = userRepository.findByUserName(kuser.getUserName()).orElseThrow(() -> new UsernameNotFoundException("Username" + kuser.getUserName() + " does not exist"));
-            String jwt = Jwts.builder().setSubject(authenticatedUser.getId() +
-                            authenticatedUser.getUserName() +
-                            authenticatedUser.getPassword() +
-                            authenticatedUser.getRole() +
-                            authenticatedUser.getFirstName() +
-                            authenticatedUser.getLastName() +
-                            authenticatedUser.getEmailAddress())
+            String jwt = Jwts.builder().setSubject("login")
+                    .claim("userId", authenticatedUser.getId())
                     .setExpiration(new Date(System.currentTimeMillis()+ SecurityConstants.EXPIRATION_TIME))
                     .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.decode(SecurityConstants.SECRET))
-                    .claim("roles", authenticatedUser.getRole())
                     .compact();
             return ResponseEntity.ok(jwt);
         }
         return new ResponseEntity<String>("unauthorized", HttpStatus.UNAUTHORIZED);
     }
-
 }
