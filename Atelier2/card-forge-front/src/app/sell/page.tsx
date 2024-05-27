@@ -27,13 +27,10 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import SportsMmaRoundedIcon from "@mui/icons-material/SportsMmaRounded";
 import { getUserCardCollection } from "@/api/card";
-import { useAuth } from "@/providers/AuthProvider";
 import { sell } from "@/api/market";
 import { toast } from "react-toastify";
-import { IUser } from "@/types/User";
 
 export default function SellTable() {
-  const { userContext } = useAuth();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
@@ -86,17 +83,15 @@ export default function SellTable() {
   };
 
   const getCardData = () => {
-    if (userContext) {
-      getUserCardCollection()
-        .then((response: ICard[] | undefined) => {
-          if (response) {
-            setCardData(response);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+    getUserCardCollection()
+      .then((response: ICard[] | undefined) => {
+        if (response) {
+          setCardData(response);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {

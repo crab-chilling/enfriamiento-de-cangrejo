@@ -11,9 +11,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  const decodedToken: IJwtPayload = parseJwt(token.value);
+  const decodedToken: IJwtPayload | null = parseJwt(token.value);
   const currentTime: number = Math.floor(Date.now() / 1000);
-  if (decodedToken.exp < currentTime) {
+  if (decodedToken && decodedToken.exp < currentTime) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

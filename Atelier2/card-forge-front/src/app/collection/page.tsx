@@ -14,24 +14,20 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import SportsMmaRoundedIcon from "@mui/icons-material/SportsMmaRounded";
 import { getUserCardCollection } from "@/api/card";
-import { useAuth } from "@/providers/AuthProvider";
 
 export default function Collection() {
-  const { userContext } = useAuth();
   const [cardData, setCardData] = useState<ICard[]>([]);
 
   useEffect(() => {
-    if (userContext) {
-      getUserCardCollection()
-        .then((response: ICard[] | undefined) => {
-          if (response) {
-            setCardData(response);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+    getUserCardCollection()
+      .then((response: ICard[] | undefined) => {
+        if (response) {
+          setCardData(response);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
