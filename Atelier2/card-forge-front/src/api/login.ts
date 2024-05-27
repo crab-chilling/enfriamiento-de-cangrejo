@@ -1,13 +1,19 @@
 import { AxiosResponse } from "axios";
-import { IUserLoginResponse, IUserLoginBody } from "@/types/User";
 import axiosInstance from "./conf";
+
+interface IUserLoginBody {
+  userName: string;
+  password: string;
+}
 
 export async function authenticate(
   user: IUserLoginBody,
-): Promise<IUserLoginResponse | undefined> {
+): Promise<string | undefined> {
   try {
-    const response: AxiosResponse<IUserLoginResponse> =
-      await axiosInstance.post("/login", user);
+    const response: AxiosResponse<string> = await axiosInstance.post(
+      "/login",
+      user,
+    );
     return response.data;
   } catch (error) {
     console.error(error);

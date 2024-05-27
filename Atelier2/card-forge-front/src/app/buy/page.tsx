@@ -18,17 +18,21 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import TablePagination from "@mui/material/TablePagination";
-import { IMarketCard } from "@/types/Card";
+import { IMarketCard } from "@/types/Market";
 import OfflineBoltRoundedIcon from "@mui/icons-material/OfflineBoltRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import SportsMmaRoundedIcon from "@mui/icons-material/SportsMmaRounded";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { getMarketCardCollection, purchase } from "@/api/market";
+import { toast } from "react-toastify";
+import { useAuth } from "@/providers/AuthProvider";
 
-export default function SellTable() {
+export default function BuyTable() {
   const [page, setPage] = useState(0);
+  const { userContext, refreshUserContext } = useAuth();
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [cardData, setCardData] = useState<IMarketCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<IMarketCard | null>(null);
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -46,8 +50,6 @@ export default function SellTable() {
     setSelectedCard(card);
   };
 
-  const [cardData, setCardData] = useState<IMarketCard[]>([]);
-
   const paginatedData = cardData.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage,
@@ -62,12 +64,21 @@ export default function SellTable() {
             const cardIndex: number = cardsCopy.findIndex(
               (c) => c.id === response.id,
             );
-            cardsCopy.splice(cardIndex, 1);
+            if (cardIndex !== -1) {
+              cardsCopy.splice(cardIndex, 1);
+            }
             setCardData(cardsCopy);
+            refreshUserContext();
+            toast.success(
+              "Achat effectué ! La carte a été ajouté à votre collection",
+            );
           }
         })
         .catch((error) => {
           console.error(error);
+          toast.error(
+            "Une erreur est survenue lors de la réalisation de votre transaction.",
+          );
         });
     }
   };
@@ -133,23 +144,35 @@ export default function SellTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {paginatedData.map((card) => (
+                {paginatedData.map((marketCard) => (
                   <TableRow
-                    key={card.id}
+                    key={marketCard.id}
                     hover
-                    onClick={() => handleRowClick(card)}
+                    onClick={() => handleRowClick(marketCard)}
                     sx={{ cursor: "pointer" }}
                   >
                     <TableCell component="th" scope="row">
-                      {card.name}
+                      {marketCard.card.name}
                     </TableCell>
-                    <TableCell align="right">{card.family}</TableCell>
-                    <TableCell align="right">{card.affinity}</TableCell>
-                    <TableCell align="center">{card.energy}</TableCell>
-                    <TableCell align="center">{card.health}</TableCell>
-                    <TableCell align="center">{card.attack}</TableCell>
-                    <TableCell align="center">{card.defence}</TableCell>
-                    <TableCell align="center">{card.price} €</TableCell>
+                    <TableCell align="right">
+                      {marketCard.card.family}
+                    </TableCell>
+                    <TableCell align="right">
+                      {marketCard.card.affinity}
+                    </TableCell>
+                    <TableCell align="center">
+                      {marketCard.card.energy}
+                    </TableCell>
+                    <TableCell align="center">
+                      {marketCard.card.health}
+                    </TableCell>
+                    <TableCell align="center">
+                      {marketCard.card.attack}
+                    </TableCell>
+                    <TableCell align="center">
+                      {marketCard.card.defence}
+                    </TableCell>
+                    <TableCell align="center">{marketCard.price} €</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -179,33 +202,33 @@ export default function SellTable() {
               <CardMedia
                 component="img"
                 sx={{ height: 140, width: "100%", objectFit: "contain" }}
-                image={selectedCard.imageUrl}
-                alt={selectedCard.name}
+                image={selectedCard.card.imageUrl}
+                alt={selectedCard.card.name}
               />
 
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {selectedCard.name}
+                  {selectedCard.card.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {selectedCard.description}
+                  {selectedCard.card.description}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="text.secondary"
                   className="mt-2"
                 >
-                  <strong>Family:</strong> {selectedCard.family}
+                  <strong>Family:</strong> {selectedCard.card.family}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  <strong>Affinity:</strong> {selectedCard.affinity}
+                  <strong>Affinity:</strong> {selectedCard.card.affinity}
                 </Typography>
                 <Grid container spacing={0} className="mt-2">
                   <Grid item xs={6}>
                     <div className="flex items-center">
                       <OfflineBoltRoundedIcon className="mr-1" />
                       <Typography variant="body2" color="text.secondary">
-                        <strong>Energy:</strong> {selectedCard.energy}
+                        <strong>Energy:</strong> {selectedCard.card.energy}
                       </Typography>
                     </div>
                   </Grid>
@@ -213,7 +236,7 @@ export default function SellTable() {
                     <div className="flex items-center">
                       <FavoriteRoundedIcon className="mr-1" />
                       <Typography variant="body2" color="text.secondary">
-                        <strong>Health:</strong> {selectedCard.health}
+                        <strong>Health:</strong> {selectedCard.card.health}
                       </Typography>
                     </div>
                   </Grid>
@@ -221,7 +244,7 @@ export default function SellTable() {
                     <div className="flex items-center">
                       <SportsMmaRoundedIcon className="mr-1" />
                       <Typography variant="body2" color="text.secondary">
-                        <strong>Attack:</strong> {selectedCard.attack}
+                        <strong>Attack:</strong> {selectedCard.card.attack}
                       </Typography>
                     </div>
                   </Grid>
@@ -229,7 +252,7 @@ export default function SellTable() {
                     <div className="flex items-center">
                       <ShieldRoundedIcon className="mr-1" />
                       <Typography variant="body2" color="text.secondary">
-                        <strong>Defence:</strong> {selectedCard.defence}
+                        <strong>Defence:</strong> {selectedCard.card.defence}
                       </Typography>
                     </div>
                   </Grid>
@@ -240,6 +263,9 @@ export default function SellTable() {
                   fullWidth
                   variant="contained"
                   startIcon={<LocalGroceryStoreIcon />}
+                  disabled={
+                    !(userContext && userContext.wallet >= selectedCard.price)
+                  }
                   onClick={purchaseSelectedCard}
                 >
                   Acheter ({selectedCard.price} €)
