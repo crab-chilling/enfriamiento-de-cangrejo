@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,15 +12,38 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { register } from "@/api/user";
+import { IUser } from "@/types/User";
+import { Alert } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
-export default function SignUp() {
+export default function Register() {
+  const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    register({
+      firstName: data.get("firstName") as string,
+      lastName: data.get("lastName") as string,
+      userName: data.get("userName") as string,
+      emailAddress: data.get("email") as string,
+      password: data.get("password") as string,
+    })
+      .then((response: IUser | undefined) => {
+        if (response) {
+          toast.success("Inscription réussie");
+          router.push("/login");
+        } else {
+          setErrorMessage("Une erreur est survenue lors de l'inscription.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrorMessage("Une erreur est survenue lors de l'inscription.");
+      });
   };
 
   return (
@@ -40,6 +64,7 @@ export default function SignUp() {
           S'inscrire
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -60,6 +85,16 @@ export default function SignUp() {
                 label="Nom"
                 name="lastName"
                 autoComplete="family-name"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                id="userName"
+                label="Nom d'utilisateur"
+                name="userName"
+                autoComplete="username"
               />
             </Grid>
             <Grid item xs={12}>

@@ -26,6 +26,6 @@ public class JwtUtils {
 
     public static Long getJwtIdFromBody(String token, Base64 base64) throws IOException {
         Map<String, Object> mapping = new ObjectMapper().readValue(base64.decode(token), HashMap.class  );
-        return Long.parseLong(mapping.get("user_id").toString());
+        return Long.parseLong(mapping.get("userId").toString());
     }
 }

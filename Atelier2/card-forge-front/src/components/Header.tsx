@@ -12,7 +12,7 @@ import { useAuth } from "@/providers/AuthProvider";
 
 export default function ResponsiveAppBar() {
   const router = useRouter();
-  const { isLoggedIn, user, logout } = useAuth();
+  const { isLoggedIn, userContext, logout } = useAuth();
 
   return (
     <AppBar position="static">
@@ -41,20 +41,21 @@ export default function ResponsiveAppBar() {
 
           {isLoggedIn ? (
             <div style={{ display: "flex", alignItems: "center" }}>
-              {isLoggedIn && user && (
+              {isLoggedIn && userContext && (
                 <div
                   className="flex flex-row items-center"
                   style={{ marginRight: "20px" }}
                 >
                   <Typography variant="body1" style={{ marginLeft: "10px" }}>
-                    {user.firstName} {user.lastName} ({user.wallet} €)
+                    {userContext.firstName} {userContext.lastName} (
+                    {userContext.wallet} €)
                   </Typography>
                 </div>
               )}
               <Button
                 variant="outlined"
                 sx={{ backgroundColor: "white" }}
-                onClick={() => logout()}
+                onClick={logout}
               >
                 Se déconnecter
               </Button>

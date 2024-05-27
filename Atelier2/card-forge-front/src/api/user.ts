@@ -1,29 +1,32 @@
 import { AxiosResponse } from "axios";
-import {
-  IUserLoginBody,
-  IUserLoginResponse,
-  IUserRegisterBody,
-} from "@/types/User";
+import { IUser } from "@/types/User";
 import axiosInstance from "./conf";
 
-export async function authenticate(
-  user: IUserLoginBody,
-): Promise<IUserLoginResponse | undefined> {
+interface IUserRegisterBody {
+  firstName: string | null;
+  lastName: string | null;
+  userName: string | null;
+  emailAddress: string | null;
+  password: string | null;
+}
+
+export async function register(
+  user: IUserRegisterBody,
+): Promise<IUser | undefined> {
   try {
-    const response: AxiosResponse<IUserLoginResponse> =
-      await axiosInstance.post("/user/login", user);
+    const response: AxiosResponse<IUser> = await axiosInstance.post(
+      "/user/register",
+      user,
+    );
     return response.data;
   } catch (error) {
     console.error(error);
   }
 }
 
-export async function register(
-  user: IUserRegisterBody,
-): Promise<IUserLoginResponse | undefined> {
+export async function getUserInfo(): Promise<IUser | undefined> {
   try {
-    const response: AxiosResponse<IUserLoginResponse> =
-      await axiosInstance.post("/user/register", user);
+    const response: AxiosResponse<IUser> = await axiosInstance.get("/user/");
     return response.data;
   } catch (error) {
     console.error(error);
