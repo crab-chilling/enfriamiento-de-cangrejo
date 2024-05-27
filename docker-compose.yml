@@ -18,6 +18,8 @@ services:
         container_name: java-api
         image: java-api
         build: ./Atelier2/CardForge
+        depends_on:
+            - card-db
         ports:
             - "8080:8080"
         env_file:
