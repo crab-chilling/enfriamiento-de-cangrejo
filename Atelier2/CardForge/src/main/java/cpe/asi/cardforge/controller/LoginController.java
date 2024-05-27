@@ -1,6 +1,7 @@
 package cpe.asi.cardforge.controller;
 
 import cpe.asi.cardforge.entity.Kuser;
+import cpe.asi.cardforge.repository.UserRepository;
 import cpe.asi.cardforge.security.SecurityConstants;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -11,17 +12,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.Optional;
 
 @RestController
 @Slf4j
 public class LoginController {
     private AuthenticationManager authenticationManager;
+    private UserRepository userRepository;
 
-    LoginController(AuthenticationManager authenticationManager){
+    LoginController(AuthenticationManager authenticationManager, UserRepository userRepository){
         this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
     }
 
 
@@ -32,16 +37,17 @@ public class LoginController {
         Authentication authenticationResponse = authenticationManager.authenticate(authenticationRequest);
 
         if(authenticationResponse.isAuthenticated()){
-            String jwt = Jwts.builder().setSubject(kuser.getId() +
-                    kuser.getUserName() +
-                    kuser.getPassword() +
-                    kuser.getRole() +
-                    kuser.getFirstName() +
-                    kuser.getLastName() +
-                    kuser.getEmailAddress())
+            Kuser authenticatedUser = userRepository.findByUserName(kuser.getUserName()).orElseThrow(() -> new UsernameNotFoundException("Username" + kuser.getUserName() + " does not exist"));
+            String jwt = Jwts.builder().setSubject(authenticatedUser.getId() +
+                            authenticatedUser.getUserName() +
+                            authenticatedUser.getPassword() +
+                            authenticatedUser.getRole() +
+                            authenticatedUser.getFirstName() +
+                            authenticatedUser.getLastName() +
+                            authenticatedUser.getEmailAddress())
                     .setExpiration(new Date(System.currentTimeMillis()+ SecurityConstants.EXPIRATION_TIME))
                     .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.decode(SecurityConstants.SECRET))
-                    .claim("roles", kuser.getRole())
+                    .claim("roles", authenticatedUser.getRole())
                     .compact();
             return ResponseEntity.ok(jwt);
         }

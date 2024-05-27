@@ -3,8 +3,10 @@ package cpe.asi.cardforge.controller;
 import cpe.asi.cardforge.dto.CardDTO;
 import cpe.asi.cardforge.dto.StoreItemDTO;
 import cpe.asi.cardforge.repository.StoreItemRepository;
+import cpe.asi.cardforge.security.JwtUtils;
 import cpe.asi.cardforge.service.StoreItemService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
