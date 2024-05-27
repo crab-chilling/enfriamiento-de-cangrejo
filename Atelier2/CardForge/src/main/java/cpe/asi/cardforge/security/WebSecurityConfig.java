@@ -2,6 +2,7 @@ package cpe.asi.cardforge.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -35,14 +36,12 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .cors(Customizer.withDefaults())  // Utiliser la configuration CORS définie
-                .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/card/**").authenticated()
-                        .anyRequest().permitAll()
-                )
-                .httpBasic(Customizer.withDefaults())
-                .formLogin(form -> form.loginPage("/login").permitAll());
+            httpSecurity
+                    .cors(Customizer.withDefaults())
+                    .csrf().disable().authorizeHttpRequests(nonAuthenticated ->
+                            nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
+                    .httpBasic(Customizer.withDefaults())
+                    .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated());
 
         return httpSecurity.build();
     }

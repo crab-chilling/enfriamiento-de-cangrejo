@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,7 +17,7 @@ import Container from "@mui/material/Container";
 import { useAuth } from "../../providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import { IUserLoginResponse } from "@/types/User";
-import { authenticate } from "@/api/user";
+import { authenticate } from "@/api/login";
 import { Alert } from "@mui/material";
 import Cookies from "js-cookie";
 
@@ -30,14 +30,14 @@ export default function Register() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const emailAddress = formData.get("email") as string;
+    const userName = formData.get("username") as string;
     const password = formData.get("password") as string;
 
-    authenticate({ emailAddress, password })
+    authenticate({ userName, password })
       .then((user: IUserLoginResponse | undefined) => {
         if (user) {
-          login(user);
-          Cookies.set("token", user.token);
+          // login(user);
+          // Cookies.set("token", user.token);
           router.push("/");
         } else {
           setErrorMessage("Une erreur est survenue lors de la connexion.");
@@ -48,6 +48,27 @@ export default function Register() {
         setErrorMessage("Une erreur est survenue lors de la connexion.");
       });
   };
+
+  async function fetchData() {
+    try {
+      const response = await fetch("https://httpbin.org/get", {
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Erreur lors de la requête:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -72,10 +93,10 @@ export default function Register() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Nom d'utilisateur"
+            name="username"
+            autoComplete="username"
             autoFocus
           />
           <TextField

@@ -30,7 +30,7 @@ public class LoginController {
     }
 
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login")
     public ResponseEntity<String> login(@RequestBody Kuser kuser) {
         log.info(kuser.toString());
         Authentication authenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(kuser.getUserName(), kuser.getPassword());

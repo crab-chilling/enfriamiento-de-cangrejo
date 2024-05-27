@@ -6,6 +6,16 @@ const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
+axiosInstance.interceptors.request.use(
+  (config) => {
+    config.headers["Accept"] = "application/json";
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
