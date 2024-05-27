@@ -41,7 +41,7 @@ public class LoginController {
             String jwt = Jwts.builder().setSubject("login")
                     .claim("userId", authenticatedUser.getId())
                     .setExpiration(new Date(System.currentTimeMillis()+ SecurityConstants.EXPIRATION_TIME))
-                    .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.decode(SecurityConstants.SECRET))
+                    .signWith(SecurityConstants.SECRET)
                     .compact();
             return ResponseEntity.ok(jwt);
         }

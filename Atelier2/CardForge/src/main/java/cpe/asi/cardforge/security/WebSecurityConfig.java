@@ -1,5 +1,6 @@
 package cpe.asi.cardforge.security;
 
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -12,11 +13,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.sql.DataSource;
 import java.util.Arrays;
 
@@ -41,9 +45,24 @@ public class WebSecurityConfig {
                     .csrf().disable().authorizeHttpRequests(nonAuthenticated ->
                             nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
                     .httpBasic(Customizer.withDefaults())
-                    .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated());
+                    .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated())
+                    .oauth2ResourceServer().jwt().decoder(jwtDecoder());
 
         return httpSecurity.build();
+    }
+
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        JwtDecoder jwtDecoder = NimbusJwtDecoder.withSecretKey(SecurityConstants.SECRET).build();
+
+        return new JwtDecoder() {
+            @Override
+            public Jwt decode(String token) throws JwtException {
+                Jwt jwt = jwtDecoder.decode(token);
+                return jwt;
+            }
+        };
     }
 
     @Bean
