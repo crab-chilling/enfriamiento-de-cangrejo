@@ -2,6 +2,7 @@ package cpe.asi.cardforge.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -32,9 +33,11 @@ public class WebSecurityConfig {
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-            httpSecurity.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/card/**").authenticated())
+            httpSecurity.csrf().disable().authorizeHttpRequests(nonAuthenticated ->
+                            nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
                     .httpBasic(Customizer.withDefaults())
-                    .formLogin(form -> form.loginPage("/login").permitAll());
+                    .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated());
+
 
             return httpSecurity.build();
     }
