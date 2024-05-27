@@ -73,7 +73,7 @@ public class StoreItemService {
     }
 
     public StoreItem sell(String token, float price, Long id) throws IOException {
-        Optional<Card> optCard = cardRepository.findById(id);
+        Optional<StoreItem> optCard = storeItemRepository.findById(id);
 
         if (optCard.isEmpty()) {
             throw new NotFoundException("Card not found");
@@ -88,13 +88,13 @@ public class StoreItemService {
             throw new NotFoundException("User not found");
         }
 
-        boolean possesCard = optSeller.get().getCards().contains(optCard.get());
+        boolean possesCard = optSeller.get().getCards().contains(optCard.get().getCard());
         if (!possesCard) {
             throw new NotFoundException("User does not own card");
         }
 
         StoreItem storeItem = new StoreItem();
-        storeItem.setCard(optCard.get());
+        storeItem.setCard(optCard.get().getCard());
         storeItem.setPrice(price);
         storeItem.setUser(optSeller.get());
 

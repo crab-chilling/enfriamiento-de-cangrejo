@@ -2,9 +2,12 @@ package cpe.asi.cardforge.controller;
 
 import cpe.asi.cardforge.dto.CardDTO;
 import cpe.asi.cardforge.dto.StoreItemDTO;
+import cpe.asi.cardforge.entity.StoreItem;
 import cpe.asi.cardforge.repository.StoreItemRepository;
+import cpe.asi.cardforge.security.JwtUtils;
 import cpe.asi.cardforge.service.StoreItemService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -40,9 +43,12 @@ public class StoreItemController {
     }
 
     @PostMapping("/sell/{price}")
-    public StoreItemDTO sell(@RequestHeader(name="Authorization") String token, @RequestBody CardDTO cardDTO, @PathVariable float price) throws IOException {
+    public StoreItemDTO sell(
+            @RequestHeader(name="Authorization") String token,
+            @RequestBody StoreItemDTO storeItemDTO) throws IOException {
         log.info("Selling store item");
-        return storeItemService.convertToDTO(storeItemService.sell(token, price, cardDTO.getId()));
+
+        return storeItemService.convertToDTO(storeItemService.sell(token, storeItemDTO.getPrice(), storeItemDTO.getId()));
     }
 
 
