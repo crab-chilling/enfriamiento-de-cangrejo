@@ -20,12 +20,6 @@ export async function purchase(
   try {
     const response: AxiosResponse<IMarketCard> = await axiosInstance.post(
       "/store-item/purchase/" + cardId,
-      {},
-      {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("token"),
-        },
-      },
     );
     return response.data;
   } catch (error) {
