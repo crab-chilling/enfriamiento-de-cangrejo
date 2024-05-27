@@ -36,5 +36,19 @@ INSERT INTO Card (name, description, family, affinity, image_url, miniature_url,
 ('Forest Guardian', 'A guardian of the forest', 'Guardian', 'Nature', 'forest_guardian.png', 'forest_guardian_mini.png', 7, 90, 35, 40),
 ('Glacial Titan', 'A titan from the glaciers', 'Titan', 'Ice', 'glacial_titan.png', 'glacial_titan_mini.png', 12, 170, 75, 70);
 
-INSERT INTO kuser (first_name, last_name, user_name, email_address, password, wallet, role) 
+INSERT INTO kuser (first_name, last_name, user_name, email_address, password, wallet, role)
 values('sa', 'sa', 'admin', 'sa@sa.fr', 'admin', '1.0', 'ADMIN');
+
+INSERT INTO kuser (first_name, last_name, user_name, email_address, password, wallet, role)
+values('test', 'test', 'test', 'test@test.fr', 'test', '1.0', 'ADMIN');
+
+INSERT INTO user_card (user_id, card_id) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 5),
+(2, 6);
+
+INSERT INTO store_item (card_id, user_id, price) VALUES
+(6, 2, 10.5);

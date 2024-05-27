@@ -16,28 +16,24 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useAuth } from "../../providers/AuthProvider";
 import { useRouter } from "next/navigation";
-import { IUserLoginResponse } from "@/types/User";
-import { authenticate } from "@/api/user";
+import { authenticate } from "@/api/login";
 import { Alert } from "@mui/material";
-import Cookies from "js-cookie";
 
 export default function Register() {
   const { login } = useAuth();
   const router = useRouter();
-
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const emailAddress = formData.get("email") as string;
+    const userName = formData.get("username") as string;
     const password = formData.get("password") as string;
 
-    authenticate({ emailAddress, password })
-      .then((user: IUserLoginResponse | undefined) => {
-        if (user) {
-          login(user);
-          Cookies.set("token", user.token);
+    authenticate({ userName, password })
+      .then((token: string | undefined) => {
+        if (token) {
+          login(token);
           router.push("/");
         } else {
           setErrorMessage("Une erreur est survenue lors de la connexion.");
@@ -72,10 +68,10 @@ export default function Register() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Nom d'utilisateur"
+            name="username"
+            autoComplete="username"
             autoFocus
           />
           <TextField
