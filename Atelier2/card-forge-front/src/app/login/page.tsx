@@ -16,15 +16,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useAuth } from "../../providers/AuthProvider";
 import { useRouter } from "next/navigation";
-import { IUserLoginResponse } from "@/types/User";
 import { authenticate } from "@/api/login";
 import { Alert } from "@mui/material";
-import Cookies from "js-cookie";
 
 export default function Register() {
   const { login } = useAuth();
   const router = useRouter();
-
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -34,10 +31,9 @@ export default function Register() {
     const password = formData.get("password") as string;
 
     authenticate({ userName, password })
-      .then((user: IUserLoginResponse | undefined) => {
-        if (user) {
-          // login(user);
-          // Cookies.set("token", user.token);
+      .then((token: string | undefined) => {
+        if (token) {
+          login(token);
           router.push("/");
         } else {
           setErrorMessage("Une erreur est survenue lors de la connexion.");

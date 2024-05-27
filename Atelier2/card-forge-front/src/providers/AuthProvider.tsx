@@ -1,14 +1,24 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { IUser } from "@/types/Card";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
+import { IJwtPayload } from "@/types/Jwt";
+import { IUser } from "@/types/User";
+import Cookies from "js-cookie";
+import { parseJwt } from "@/utils/jwt";
+import { getUserInfo } from "@/api/user";
 
-// Mettre à jour le type du contexte pour inclure les informations sur l'utilisateur
 interface AuthContextType {
   isLoggedIn: boolean;
-  user: IUser | null; // Utiliser null si aucun utilisateur n'est connecté
-  login: (user: IUser) => void;
+  userContext: IUser | null;
+  login: (token: string) => void;
   logout: () => void;
+  refreshUserContext: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -19,20 +29,55 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState<IUser | null>(null);
+  const [tokenPayload, setTokenPayload] = useState<IJwtPayload | null>(null);
+  const [userContext, setUserContext] = useState<IUser | null>(null);
 
-  const login = (user: IUser) => {
+  const isTokenExpired = (tokenPayload: IJwtPayload | null): boolean => {
+    if (!tokenPayload || !tokenPayload.exp) return true;
+    return tokenPayload.exp * 1000 < Date.now();
+  };
+
+  const refreshUserContext = async () => {
+    try {
+      const user = await getUserInfo();
+      if (user) {
+        setUserContext(user);
+      }
+    } catch (error) {
+      console.error("Failed to update user context:", error);
+    }
+  };
+
+  const login = async (token: string) => {
+    setTokenPayload(parseJwt(token));
+    Cookies.set("token", token);
+    await refreshUserContext();
     setIsLoggedIn(true);
-    setUser(user);
   };
 
   const logout = () => {
+    setTokenPayload(null);
+    Cookies.remove("token");
+    setUserContext(null);
     setIsLoggedIn(false);
-    setUser(null);
   };
 
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      const decodedToken = parseJwt(token);
+      if (!isTokenExpired(decodedToken)) {
+        login(token);
+      } else {
+        logout();
+      }
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, userContext, login, logout, refreshUserContext }}
+    >
       {children}
     </AuthContext.Provider>
   );

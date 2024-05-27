@@ -15,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
@@ -88,7 +89,11 @@ public class StoreItemService {
             throw new NotFoundException("User not found");
         }
 
-        boolean possesCard = optSeller.get().getCards().contains(optCard.get());
+        boolean possesCard = optSeller.get()
+                .getCards()
+                .stream()
+                .map(Card::getId)
+                .anyMatch(cid -> Objects.equals(cid, optCard.get().getId()));
         if (!possesCard) {
             throw new NotFoundException("User does not own card");
         }
@@ -100,6 +105,4 @@ public class StoreItemService {
 
         return storeItemRepository.save(storeItem);
     }
-
-
 }

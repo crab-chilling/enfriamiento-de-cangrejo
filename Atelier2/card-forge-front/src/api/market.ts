@@ -1,7 +1,6 @@
 import { AxiosResponse } from "axios";
 import axiosInstance from "./conf";
-import { IMarketCard, IUserCard } from "@/types/Card";
-import Cookies from "js-cookie";
+import { IMarketCard } from "@/types/Market";
 
 export async function getMarketCardCollection(): Promise<
   IMarketCard[] | undefined
@@ -35,12 +34,11 @@ export async function purchase(
 }
 
 export async function sell(
-  price: number,
-  card: IUserCard,
+  card: Partial<IMarketCard>,
 ): Promise<IMarketCard | undefined> {
   try {
     const response: AxiosResponse<IMarketCard> = await axiosInstance.post(
-      "/store-item/sell/" + price,
+      "/store-item/sell",
       card,
     );
     return response.data;

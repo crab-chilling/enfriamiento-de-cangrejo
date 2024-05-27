@@ -9,6 +9,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     config.headers["Accept"] = "application/json";
+    const token: string | undefined = Cookies.get("token");
+    if (token) config.headers["Authorization"] = token;
     return config;
   },
   (error) => {
@@ -21,7 +23,7 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error: AxiosError) => {
-    if (error.response && error.response.status === 403) {
+    if (error.response && error.response.status === 401) {
       Cookies.remove("token");
       Router.push("/login");
     }

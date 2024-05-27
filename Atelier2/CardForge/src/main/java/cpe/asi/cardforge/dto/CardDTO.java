@@ -17,5 +17,4 @@ public class CardDTO implements Serializable {
     private int health;
     private int attack;
     private int defence;
-    private float price;
 }
