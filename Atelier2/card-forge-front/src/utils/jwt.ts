@@ -1,17 +1,13 @@
-import { JwtPayload } from "@/types/Jwt";
+import { IJwtPayload } from "@/types/Jwt";
 
-export function parseJwt(token: string): JwtPayload {
-  var base64Url = token.split(".")[1];
-  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  var jsonPayload = decodeURIComponent(
-    window
-      .atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join(""),
-  );
-
-  return JSON.parse(jsonPayload);
+export function parseJwt(token: string): IJwtPayload | null {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = Buffer.from(base64, "base64").toString("utf-8");
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    console.error("Failed to parse JWT:", error);
+    return null;
+  }
 }
