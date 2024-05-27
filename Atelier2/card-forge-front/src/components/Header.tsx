@@ -14,6 +14,11 @@ export default function ResponsiveAppBar() {
   const router = useRouter();
   const { isLoggedIn, userContext, logout } = useAuth();
 
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -55,7 +60,7 @@ export default function ResponsiveAppBar() {
               <Button
                 variant="outlined"
                 sx={{ backgroundColor: "white" }}
-                onClick={logout}
+                onClick={handleLogout}
               >
                 Se déconnecter
               </Button>
