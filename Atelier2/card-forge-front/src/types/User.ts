@@ -7,7 +7,7 @@ export interface IUserLoginResponse {
 }
 
 export interface IUserLoginBody {
-  emailAddress: string;
+  userName: string;
   password: string;
 }
 

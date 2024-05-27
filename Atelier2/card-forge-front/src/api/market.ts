@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import axiosInstance from "./conf";
 import { IMarketCard, IUserCard } from "@/types/Card";
+import Cookies from "js-cookie";
 
 export async function getMarketCardCollection(): Promise<
   IMarketCard[] | undefined
@@ -20,6 +21,12 @@ export async function purchase(
   try {
     const response: AxiosResponse<IMarketCard> = await axiosInstance.post(
       "/store-item/purchase/" + cardId,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + Cookies.get("token"),
+        },
+      },
     );
     return response.data;
   } catch (error) {
