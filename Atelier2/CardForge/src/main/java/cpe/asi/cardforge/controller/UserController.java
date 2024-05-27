@@ -70,16 +70,10 @@ public class UserController {
         return ResponseEntity.ok(userService.convertToDTO(user.get()));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
-        log.info("Getting user with id {}", id);
-        Optional<Kuser> user = userRepository.findById(id);
-
-        if (user.isEmpty()) {
-            throw new AlreadyExistingException("User not found");
-        }
-
-        return ResponseEntity.ok(userService.convertToDTO(user.get()));
+    @GetMapping("/")
+    public ResponseEntity<UserDTO> getUser(@RequestHeader(name="Authorization") String token) {
+        log.info("Getting user info from user id in the token");
+        return ResponseEntity.ok(userService.convertToDTO(userService.getUserInfoById(token)));
     }
 
 }

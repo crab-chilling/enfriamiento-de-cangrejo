@@ -42,14 +42,11 @@ public class StoreItemController {
         return storeItemService.convertToDTO(storeItemService.purchase(token, id));
     }
 
-    @PostMapping("/sell/{price}")
+    @PostMapping("/sell")
     public StoreItemDTO sell(
             @RequestHeader(name="Authorization") String token,
             @RequestBody StoreItemDTO storeItemDTO) throws IOException {
         log.info("Selling store item");
-
-        return storeItemService.convertToDTO(storeItemService.sell(token, storeItemDTO.getPrice(), storeItemDTO.getId()));
+        return storeItemService.convertToDTO(storeItemService.sell(token, storeItemDTO.getPrice(), storeItemDTO.getCard().getId()));
     }
-
-
 }

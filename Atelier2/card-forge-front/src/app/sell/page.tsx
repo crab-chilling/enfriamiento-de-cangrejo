@@ -19,7 +19,8 @@ import Container from "@mui/material/Container";
 import SellIcon from "@mui/icons-material/Sell";
 import Button from "@mui/material/Button";
 import TablePagination from "@mui/material/TablePagination";
-import { IMarketCard, IUser, IUserCard } from "@/types/Card";
+import { ICard } from "@/types/Card";
+import { IMarketCard } from "@/types/Market";
 import { TextField, InputAdornment } from "@mui/material";
 import OfflineBoltRoundedIcon from "@mui/icons-material/OfflineBoltRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
@@ -28,15 +29,17 @@ import SportsMmaRoundedIcon from "@mui/icons-material/SportsMmaRounded";
 import { getUserCardCollection } from "@/api/card";
 import { useAuth } from "@/providers/AuthProvider";
 import { sell } from "@/api/market";
+import { toast } from "react-toastify";
+import { IUser } from "@/types/User";
 
 export default function SellTable() {
-  const { user } = useAuth();
+  const { userContext } = useAuth();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [selectedCard, setSelectedCard] = useState<IUserCard | null>(null);
+  const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
   const [sellingPrice, setSellingPrice] = useState<number | null>(null);
 
-  const handlePriceChange = (event) => {
+  const handlePriceChange = (event: any) => {
     const value = event.target.value;
     if (value === "" || (Number(value) > 0 && !isNaN(Number(value)))) {
       setSellingPrice(event.target.value);
@@ -54,11 +57,11 @@ export default function SellTable() {
     setPage(0);
   };
 
-  const handleRowClick = (card: IUserCard) => {
+  const handleRowClick = (card: ICard) => {
     setSelectedCard(card);
   };
 
-  const [cardData, setCardData] = useState<IUserCard[]>([]);
+  const [cardData, setCardData] = useState<ICard[]>([]);
 
   const paginatedData = cardData.slice(
     page * rowsPerPage,
@@ -67,29 +70,27 @@ export default function SellTable() {
 
   const sellSelectedCard = () => {
     if (sellingPrice && selectedCard) {
-      sell(sellingPrice, selectedCard)
+      sell({ card: selectedCard, price: sellingPrice })
         .then((response: IMarketCard | undefined) => {
           if (response) {
-            const cardsCopy = cardData;
-            const cardIndex: number = cardsCopy.findIndex(
-              (c) => c.id === response.id,
-            );
-            cardsCopy.splice(cardIndex, 1);
-            setCardData(cardsCopy);
+            toast.success("Votre annonce a bien été publiée !");
           }
         })
         .catch((error) => {
           console.error(error);
+          toast.error(
+            "Une erreur est survenue lors de la mise en ligne de votre annonce.",
+          );
         });
     }
   };
 
   const getCardData = () => {
-    if (user) {
-      getUserCardCollection(user.id)
-        .then((response: IUser | undefined) => {
+    if (userContext) {
+      getUserCardCollection()
+        .then((response: ICard[] | undefined) => {
           if (response) {
-            setCardData(response.cards);
+            setCardData(response);
           }
         })
         .catch((error) => {
@@ -106,7 +107,7 @@ export default function SellTable() {
     <Container className="mt-5">
       <Box className="flex justify-center items-center mb-5">
         <Typography variant="h4" component="h1" className="mr-2">
-          Vente
+          Vendre une carte
         </Typography>
         <Typography variant="subtitle1" component="p" className="italic">
           ({cardData.length} cartes dans votre collection)
