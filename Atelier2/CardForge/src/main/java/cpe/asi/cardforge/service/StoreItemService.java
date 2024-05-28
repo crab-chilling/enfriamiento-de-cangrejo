@@ -15,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -104,5 +105,15 @@ public class StoreItemService {
         storeItem.setUser(optSeller.get());
 
         return storeItemRepository.save(storeItem);
+    }
+
+    public List<StoreItem> getSellerStoreCards(Long sellerId) {
+        Optional<Kuser> optSeller = userRepository.findById(sellerId);
+
+        if (optSeller.isEmpty()) {
+            throw new NotFoundException("User not found");
+        }
+
+        return storeItemRepository.findAllByUser(optSeller.get());
     }
 }
