@@ -14,6 +14,19 @@ export async function getMarketCardCollection(): Promise<
   }
 }
 
+export async function getSellerMarketCardCollection(
+  sellerId: number,
+): Promise<IMarketCard[] | undefined> {
+  try {
+    const response: AxiosResponse<IMarketCard[]> = await axiosInstance.get(
+      "/store-item/seller/" + sellerId,
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function purchase(
   cardId: number,
 ): Promise<IMarketCard | undefined> {

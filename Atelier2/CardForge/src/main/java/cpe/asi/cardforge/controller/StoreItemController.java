@@ -5,6 +5,7 @@ import cpe.asi.cardforge.dto.StoreItemDTO;
 import cpe.asi.cardforge.entity.StoreItem;
 import cpe.asi.cardforge.repository.StoreItemRepository;
 import cpe.asi.cardforge.security.JwtUtils;
+import cpe.asi.cardforge.service.CardService;
 import cpe.asi.cardforge.service.StoreItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -19,11 +20,13 @@ import java.util.List;
 public class StoreItemController {
 
     private final StoreItemService storeItemService;
+    private final CardService cardService;
     private final StoreItemRepository storeItemRepository;
 
-    public StoreItemController(StoreItemService storeItemService, StoreItemRepository storeItemRepository) {
+    public StoreItemController(StoreItemService storeItemService, StoreItemRepository storeItemRepository, CardService cardService) {
         this.storeItemService = storeItemService;
         this.storeItemRepository = storeItemRepository;
+        this.cardService = cardService;
     }
 
     @GetMapping("/all")
@@ -48,5 +51,14 @@ public class StoreItemController {
             @RequestBody StoreItemDTO storeItemDTO) throws IOException {
         log.info("Selling store item");
         return storeItemService.convertToDTO(storeItemService.sell(token, storeItemDTO.getPrice(), storeItemDTO.getCard().getId()));
+    }
+
+    @GetMapping("/seller/{sellerId}")
+    public List<CardDTO> getSellerStoreCards(@PathVariable Long sellerId) {
+        log.info("Getting all store items from seller " + sellerId);
+        return storeItemService
+                .getSellerStoreCards(sellerId)
+                .stream().map(s -> cardService.convertToDTO(s.getCard()))
+                .toList();
     }
 }

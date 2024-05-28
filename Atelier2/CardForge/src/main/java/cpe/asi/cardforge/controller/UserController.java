@@ -1,9 +1,11 @@
 package cpe.asi.cardforge.controller;
 
+import cpe.asi.cardforge.dto.CardDTO;
 import cpe.asi.cardforge.dto.UserDTO;
 import cpe.asi.cardforge.entity.Kuser;
 import cpe.asi.cardforge.error.AlreadyExistingException;
 import cpe.asi.cardforge.repository.UserRepository;
+import cpe.asi.cardforge.service.CardService;
 import cpe.asi.cardforge.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +22,12 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserRepository userRepository, UserService userService) {
+    private final CardService cardService;
+
+    public UserController(UserRepository userRepository, UserService userService, CardService cardService) {
         this.userRepository = userRepository;
         this.userService = userService;
+        this.cardService = cardService;
     }
 
     @GetMapping("/all")
@@ -74,6 +79,16 @@ public class UserController {
     public ResponseEntity<UserDTO> getUser(@RequestHeader(name="Authorization") String token) {
         log.info("Getting user info from user id in the token");
         return ResponseEntity.ok(userService.convertToDTO(userService.getUserInfoById(token)));
+    }
+
+    @GetMapping("/cards")
+    public List<CardDTO> getUserCards(@RequestHeader(name="Authorization") String token) {
+        return userService
+                .getUserInfoById(token)
+                .getCards()
+                .stream()
+                .map(cardService::convertToDTO)
+                .toList();
     }
 
 }

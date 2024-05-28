@@ -27,14 +27,18 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import SportsMmaRoundedIcon from "@mui/icons-material/SportsMmaRounded";
 import { getUserCardCollection } from "@/api/card";
-import { sell } from "@/api/market";
+import { getSellerMarketCardCollection, sell } from "@/api/market";
 import { toast } from "react-toastify";
+import { useAuth } from "@/providers/AuthProvider";
 
 export default function SellTable() {
   const [page, setPage] = useState(0);
+  const [cardData, setCardData] = useState<ICard[]>([]);
+  const [onSaleCardData, setOnSaleCardData] = useState<IMarketCard[]>([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
   const [sellingPrice, setSellingPrice] = useState<number | null>(null);
+  const { userContext } = useAuth();
 
   const handlePriceChange = (event: any) => {
     const value = event.target.value;
@@ -58,8 +62,6 @@ export default function SellTable() {
     setSelectedCard(card);
   };
 
-  const [cardData, setCardData] = useState<ICard[]>([]);
-
   const paginatedData = cardData.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage,
@@ -82,7 +84,7 @@ export default function SellTable() {
     }
   };
 
-  const getCardData = () => {
+  const getUserCardCollectionData = () => {
     getUserCardCollection()
       .then((response: ICard[] | undefined) => {
         if (response) {
@@ -94,8 +96,23 @@ export default function SellTable() {
       });
   };
 
+  const getMarketCardCollectionBySeller = () => {
+    if (userContext) {
+      getSellerMarketCardCollection(userContext.id)
+        .then((response: IMarketCard[] | undefined) => {
+          if (response) {
+            setOnSaleCardData(response);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
+
   useEffect(() => {
-    getCardData();
+    getUserCardCollectionData();
+    getMarketCardCollectionBySeller();
   }, []);
 
   return (
