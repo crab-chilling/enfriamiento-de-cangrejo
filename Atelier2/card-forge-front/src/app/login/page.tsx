@@ -45,27 +45,6 @@ export default function Register() {
       });
   };
 
-  async function fetchData() {
-    try {
-      const response = await fetch("https://httpbin.org/get", {
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error("Erreur lors de la requête:", error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
