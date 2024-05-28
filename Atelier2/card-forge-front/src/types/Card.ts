@@ -11,3 +11,7 @@ export interface ICard {
   attack: number;
   defence: number;
 }
+
+export interface ICardWithOnSaleStatus extends ICard {
+  isOnSale: boolean;
+}

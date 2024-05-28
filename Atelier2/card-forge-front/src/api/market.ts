@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import axiosInstance from "./conf";
 import { IMarketCard } from "@/types/Market";
+import { ICard } from "@/types/Card";
 
 export async function getMarketCardCollection(): Promise<
   IMarketCard[] | undefined
@@ -13,17 +14,17 @@ export async function getMarketCardCollection(): Promise<
     console.error(error);
   }
 }
-
-export async function getSellerMarketCardCollection(
+export async function getUserOnSaleCardCollection(
   sellerId: number,
-): Promise<IMarketCard[] | undefined> {
+): Promise<ICard[]> {
   try {
-    const response: AxiosResponse<IMarketCard[]> = await axiosInstance.get(
+    const response: AxiosResponse<ICard[]> = await axiosInstance.get(
       "/store-item/seller/" + sellerId,
     );
     return response.data;
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching user on sale card collection:", error);
+    return [];
   }
 }
 
