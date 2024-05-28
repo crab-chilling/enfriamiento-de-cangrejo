@@ -19,7 +19,7 @@ import Container from "@mui/material/Container";
 import SellIcon from "@mui/icons-material/Sell";
 import Button from "@mui/material/Button";
 import TablePagination from "@mui/material/TablePagination";
-import { ICard } from "@/types/Card";
+import { ICard, ICardWithOnSaleStatus } from "@/types/Card";
 import { IMarketCard } from "@/types/Market";
 import { TextField, InputAdornment } from "@mui/material";
 import OfflineBoltRoundedIcon from "@mui/icons-material/OfflineBoltRounded";
@@ -27,16 +27,16 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import SportsMmaRoundedIcon from "@mui/icons-material/SportsMmaRounded";
 import { getUserCardCollection } from "@/api/card";
-import { getSellerMarketCardCollection, sell } from "@/api/market";
+import { getUserOnSaleCardCollection, sell } from "@/api/market";
 import { toast } from "react-toastify";
 import { useAuth } from "@/providers/AuthProvider";
 
 export default function SellTable() {
   const [page, setPage] = useState(0);
-  const [cardData, setCardData] = useState<ICard[]>([]);
-  const [onSaleCardData, setOnSaleCardData] = useState<IMarketCard[]>([]);
+  const [cardData, setCardData] = useState<ICardWithOnSaleStatus[]>([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
+  const [selectedCard, setSelectedCard] =
+    useState<ICardWithOnSaleStatus | null>(null);
   const [sellingPrice, setSellingPrice] = useState<number | null>(null);
   const { userContext } = useAuth();
 
@@ -84,36 +84,30 @@ export default function SellTable() {
     }
   };
 
-  const getUserCardCollectionData = () => {
-    getUserCardCollection()
-      .then((response: ICard[] | undefined) => {
-        if (response) {
-          setCardData(response);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  const getMarketCardCollectionBySeller = () => {
-    if (userContext) {
-      getSellerMarketCardCollection(userContext.id)
-        .then((response: IMarketCard[] | undefined) => {
-          if (response) {
-            setOnSaleCardData(response);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  };
-
   useEffect(() => {
-    getUserCardCollectionData();
-    getMarketCardCollectionBySeller();
-  }, []);
+    const fetchCardData = async () => {
+      try {
+        const userCards = await getUserCardCollection();
+        if (userCards && userContext) {
+          const onSaleCards = await getUserOnSaleCardCollection(userContext.id);
+          if (onSaleCards) {
+            const onSaleCardIds = new Set(onSaleCards.map((card) => card.id));
+            const combinedCards = userCards.map((card) => ({
+              ...card,
+              isOnSale: onSaleCardIds.has(card.id),
+            }));
+            setCardData(combinedCards);
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (userContext) {
+      fetchCardData();
+    }
+  }, [userContext]);
 
   return (
     <Container className="mt-5">
@@ -154,6 +148,9 @@ export default function SellTable() {
                   <TableCell align="center" className="text-white">
                     Défense
                   </TableCell>
+                  <TableCell align="center" className="text-white">
+                    En vente
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -173,6 +170,9 @@ export default function SellTable() {
                     <TableCell align="center">{card.health}</TableCell>
                     <TableCell align="center">{card.attack}</TableCell>
                     <TableCell align="center">{card.defence}</TableCell>
+                    <TableCell align="center">
+                      {card.isOnSale ? "Oui" : "Non"}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -262,29 +262,35 @@ export default function SellTable() {
                 className="pt-0"
                 style={{ display: "flex", alignItems: "center" }}
               >
-                <TextField
-                  size="small"
-                  type="number"
-                  label="Prix"
-                  variant="outlined"
-                  value={sellingPrice}
-                  onChange={handlePriceChange}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">€</InputAdornment>
-                    ),
-                    inputProps: { min: 0.01, step: 0.01 },
-                  }}
-                  style={{ marginRight: "16px" }}
-                />
+                {!selectedCard.isOnSale && (
+                  <TextField
+                    size="small"
+                    type="number"
+                    label="Prix"
+                    variant="outlined"
+                    value={sellingPrice}
+                    onChange={handlePriceChange}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">€</InputAdornment>
+                      ),
+                      inputProps: { min: 0.01, step: 0.01 },
+                    }}
+                    style={{ marginRight: "16px" }}
+                  />
+                )}
                 <Button
                   fullWidth
                   variant="contained"
                   startIcon={<SellIcon />}
-                  disabled={!sellingPrice || Number(sellingPrice) <= 0}
+                  disabled={
+                    !sellingPrice ||
+                    Number(sellingPrice) <= 0 ||
+                    selectedCard.isOnSale
+                  }
                   onClick={sellSelectedCard}
                 >
-                  Vendre
+                  {selectedCard.isOnSale ? "En vente" : "Vendre"}
                 </Button>
               </CardContent>
             </Card>
