@@ -1,0 +1,16 @@
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/dto/CardDTO.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/dto/UserCardDTO.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/entity/StoreItem.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/dto/UserDTO.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/repository/AuthRepository.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/exception/TooPoorException.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/dto/StoreItemDTO.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/exception/AlreadyExistingException.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/security/UserDataSource.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/entity/Kuser.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/security/SecurityConstants.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/security/MyUserDetailsService.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/exception/NotFoundException.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/security/WebSecurityConfig.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/entity/Card.java
+/Users/loicperrin/github/crab-chilling/Atelier3/crab-microservices/core-service/src/main/java/fr/crab/chilling/security/JwtUtils.java
