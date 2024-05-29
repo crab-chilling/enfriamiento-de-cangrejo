@@ -50,7 +50,7 @@ const cardsData = [
       <SportsEsportsIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
     ),
     description: "Combattez en utilisant les cartes de votre collection",
-    link: "/fight",
+    link: "/rooms",
   },
 ];
 
