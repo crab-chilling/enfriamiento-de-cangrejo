@@ -48,7 +48,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(nonAuthenticated ->
                         nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated())
+                .formLogin(form -> form.loginPage("/login").permitAll())
+                .authorizeHttpRequests(authenticate -> authenticate.anyRequest().permitAll())
                 .oauth2ResourceServer().jwt().decoder(jwtDecoder());
 
         return httpSecurity.build();
