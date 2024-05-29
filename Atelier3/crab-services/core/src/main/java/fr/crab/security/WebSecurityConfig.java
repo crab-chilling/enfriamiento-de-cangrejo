@@ -1,6 +1,7 @@
-package fr.crab.user.security;
+package fr.crab.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -27,6 +28,7 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
 
     @Bean
     public DataSource dataSource() {

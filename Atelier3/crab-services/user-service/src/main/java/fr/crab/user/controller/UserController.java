@@ -59,19 +59,6 @@ public class UserController {
         return ResponseEntity.ok(userService.convertToDTO(savedUser));
     }
 
-
-    @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO) {
-        log.info("Logging in user");
-        Optional<Kuser> user = userRepository.findByEmailAddress(userDTO.getEmailAddress());
-
-        if (user.isEmpty() || !user.get().getPassword().equals(userDTO.getPassword())) {
-            throw new AlreadyExistingException("Invalid credentials");
-        }
-
-        return ResponseEntity.ok(userService.convertToDTO(user.get()));
-    }
-
     @GetMapping("/")
     public ResponseEntity<UserDTO> getUser(@RequestHeader(name="Authorization") String token) {
         log.info("Getting user info from user id in the token");
