@@ -14,6 +14,8 @@ jobs:
         with:
           fetch-depth: 0
           path: Atelier3/crab-services
+      - name: Change directory to CardForge
+        run: cd Atelier3/CardForge
       - name: Print working directory
         run: pwd
       - name: Print directory contents
