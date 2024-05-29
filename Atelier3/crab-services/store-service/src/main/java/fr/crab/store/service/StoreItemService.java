@@ -65,9 +65,11 @@ public class StoreItemService {
         }
 
         buyer.setWallet(wallet - price);
+        // TODO change this to patch user
         registerUser(buyer);
         Kuser seller = optItem.get().getUser();
         seller.setWallet(seller.getWallet() + price);
+        // TODO change this to patch user
         registerUser(seller);
         storeItemRepository.delete(optItem.get());
         return optItem.get();

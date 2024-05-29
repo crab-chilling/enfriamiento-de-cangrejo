@@ -1,4 +1,4 @@
-package fr.crab.user.security;
+package fr.crab.security;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

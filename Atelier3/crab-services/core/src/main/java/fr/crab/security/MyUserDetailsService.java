@@ -1,7 +1,7 @@
-package fr.crab.user.security;
+package fr.crab.security;
 
 import fr.crab.entity.Kuser;
-import fr.crab.user.repository.UserRepository;
+import fr.crab.repository.AuthenticationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,13 +18,13 @@ import java.util.Set;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
 
+    @Autowired
+    private AuthenticationRepository authenticationRepository;
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Kuser kuser = userRepository.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException("Username" + username + " does not exist"));
+        Kuser kuser = authenticationRepository.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException("Username" + username + " does not exist"));
         GrantedAuthority authority =
                 buildUserAuthority(kuser.getRole());
 
