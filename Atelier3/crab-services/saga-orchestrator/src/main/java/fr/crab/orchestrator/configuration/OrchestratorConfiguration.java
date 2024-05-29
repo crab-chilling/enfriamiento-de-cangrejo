@@ -1,4 +1,4 @@
-package fr.crab.card.configuration;
+package fr.crab.orchestrator.configuration;
 
 import fr.crab.security.WebSecurityConfig;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EntityScan(basePackages = {"fr.crab.entity"})
-@EnableJpaRepositories(basePackages = {"fr.crab.card.repository", "fr.crab.repository"})
+@EnableJpaRepositories(basePackages = {"fr.crab.repository"})
 @ComponentScan(basePackages = {"fr.crab"})
-@Import(value = {WebSecurityConfig.class})
-public class CardConfiguration {
+@Import(WebSecurityConfig.class)
+public class OrchestratorConfiguration {
 }
