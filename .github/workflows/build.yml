@@ -13,13 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          path: Atelier3/crab-services
-      - name: Change directory to CardForge
-        run: cd Atelier3/crab-services
-      - name: Print working directory
-        run: pwd
-      - name: Print directory contents
-        run: ls
+          # path: Atelier3/crab-services
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -41,4 +35,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cardforge
+        run: mvn --file Atelier3/crab-services/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cardforge
