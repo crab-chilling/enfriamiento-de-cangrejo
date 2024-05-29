@@ -42,13 +42,14 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-            httpSecurity
-                    .cors(Customizer.withDefaults())
-                    .csrf().disable().authorizeHttpRequests(nonAuthenticated ->
-                            nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
-                    .httpBasic(Customizer.withDefaults())
-                    .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated())
-                    .oauth2ResourceServer().jwt().decoder(jwtDecoder());
+        httpSecurity
+                .cors(Customizer.withDefaults())
+                .csrf().disable()
+                .authorizeHttpRequests(nonAuthenticated ->
+                        nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
+                .httpBasic(Customizer.withDefaults())
+                .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated())
+                .oauth2ResourceServer().jwt().decoder(jwtDecoder());
 
         return httpSecurity.build();
     }
