@@ -1,0 +1,18 @@
+spring:
+    jpa:
+        properties:
+            hibernate:
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        generate-ddl: false
+        open-in-view: true
+    datasource:
+        url: jdbc:postgresql://localhost:5432/card_game
+        username: sa
+        password: sa
+        driver-class-name: org.postgresql.Driver
+
+server:
+  port: 8012
