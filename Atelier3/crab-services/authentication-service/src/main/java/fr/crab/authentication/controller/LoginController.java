@@ -4,6 +4,9 @@ import fr.crab.entity.Kuser;
 import fr.crab.repository.AuthenticationRepository;
 import fr.crab.security.SecurityConstants;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.impl.TextCodec;
+import io.jsonwebtoken.io.Encoders;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Base64;
 import java.util.Date;
 
 @RestController
@@ -37,10 +41,11 @@ public class LoginController {
 
         if(authenticationResponse.isAuthenticated()){
             Kuser authenticatedUser = authenticationRepository.findByUserName(kuser.getUserName()).orElseThrow(() -> new UsernameNotFoundException("Username" + kuser.getUserName() + " does not exist"));
+
             String jwt = Jwts.builder().setSubject("login")
                     .claim("userId", authenticatedUser.getId())
                     .setExpiration(new Date(System.currentTimeMillis()+ SecurityConstants.EXPIRATION_TIME))
-                    .signWith(SecurityConstants.SECRET)
+                    .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64URL.decode(SecurityConstants.SECRET))
                     .compact();
             return ResponseEntity.ok(jwt);
         }

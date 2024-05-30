@@ -7,6 +7,6 @@ import javax.crypto.SecretKey;
 
 public class SecurityConstants {
 
-    public static final long EXPIRATION_TIME = (5 * 60 * 1000);
-    public static final SecretKey SECRET = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    public static final long EXPIRATION_TIME = 10L;
+    public static final String SECRET = "fd5f8f240321cce301ac27daacd4205b5e2fe0b72d12762183d7000977eaa2db";
 }
