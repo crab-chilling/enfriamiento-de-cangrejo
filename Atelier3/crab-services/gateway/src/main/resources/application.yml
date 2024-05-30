@@ -1,6 +1,16 @@
 spring:
+    cloud:
+      gateway:
+          gateway:
+              globalcors:
+                  corsConfigurations:
+                      '[/**]':
+                          allowedOrigins: "*"
+                          allowedMethods:
+                              - GET
+                              - POST
     application:
-        name: Gateway Micro service
+        name: api-gateway
     jpa:
         properties:
             hibernate:
