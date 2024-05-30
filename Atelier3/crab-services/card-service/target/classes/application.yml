@@ -1,6 +1,6 @@
 spring:
     application:
-        name: Card Micro service
+        name: card-service
     jpa:
         properties:
             hibernate:
