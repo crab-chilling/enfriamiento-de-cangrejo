@@ -22,8 +22,11 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.sql.DataSource;
 import java.util.Arrays;
+import java.util.Base64;
 
 @Configuration
 @EnableWebSecurity
@@ -46,25 +49,20 @@ public class WebSecurityConfig {
                     .cors(Customizer.withDefaults())
                     .csrf().disable().authorizeHttpRequests(nonAuthenticated ->
                             nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
-                    .httpBasic(Customizer.withDefaults())
                     .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated())
-                    .oauth2ResourceServer().jwt().decoder(jwtDecoder());
+                    .oauth2ResourceServer().jwt().decoder(jwtDecoder(jwtSecretKey() ));
 
         return httpSecurity.build();
     }
 
-
     @Bean
-    public JwtDecoder jwtDecoder() {
-        JwtDecoder jwtDecoder = NimbusJwtDecoder.withSecretKey(SecurityConstants.SECRET).build();
-
-        return new JwtDecoder() {
-            @Override
-            public Jwt decode(String token) throws JwtException {
-                Jwt jwt = jwtDecoder.decode(token);
-                return jwt;
-            }
-        };
+    public SecretKey jwtSecretKey() {
+        byte[] decodedKey = Base64.getDecoder().decode(SecurityConstants.SECRET);
+        return new SecretKeySpec(decodedKey, 0, decodedKey.length, "HmacSHA256");
+    }
+    @Bean
+    public JwtDecoder jwtDecoder(SecretKey secretKey) {
+       return NimbusJwtDecoder.withSecretKey(secretKey).build();
     }
 
     @Bean
