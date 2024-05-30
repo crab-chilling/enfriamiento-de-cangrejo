@@ -1,6 +1,10 @@
 spring:
     application:
-        name: Gateway Micro service
+        name: api-gateway
+    cloud:
+        gateway:
+            default-filters:
+                - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
     jpa:
         properties:
             hibernate:
