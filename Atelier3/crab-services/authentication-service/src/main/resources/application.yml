@@ -1,6 +1,6 @@
 spring:
     application:
-        name: Authentication Micro service
+        name: api-authentication-service
     jpa:
         properties:
             hibernate:

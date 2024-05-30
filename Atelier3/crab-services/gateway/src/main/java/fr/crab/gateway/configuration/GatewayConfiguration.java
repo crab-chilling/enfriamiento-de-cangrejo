@@ -10,9 +10,18 @@ public class GatewayConfiguration {
     @Bean
     RouteLocator gateway(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
+                .route("api-auth", routeSpec -> routeSpec
+                        .path("/login")
+                        .uri("lb://api-authentication-service"))
+                .route("api-users", routeSpec -> routeSpec
+                        .path("/user/**")
+                        .uri("lb://api-user-service"))
                 .route("api-cards", routeSpec -> routeSpec
                         .path("/card/**")
-                        .uri("lb://card-service"))
+                        .uri("lb://api-card-service"))
+                .route("api-store", routeSpec -> routeSpec
+                        .path("/store-item/**")
+                        .uri("lb://api-store-service"))
                 .build();
     }
 }
