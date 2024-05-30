@@ -1,6 +1,6 @@
 spring:
     application:
-        name: Store Micro service
+        name: store-service
     jpa:
         properties:
             hibernate:

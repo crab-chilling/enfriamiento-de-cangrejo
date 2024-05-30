@@ -1,6 +1,6 @@
 spring:
     application:
-        name: User Micro service
+        name: user-service
     jpa:
         properties:
             hibernate:

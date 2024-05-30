@@ -1,6 +1,6 @@
 spring:
     application:
-        name: Gateway Micro service
+        name: Authentication Micro service
     jpa:
         properties:
             hibernate:
@@ -17,10 +17,9 @@ spring:
         driver-class-name: org.postgresql.Driver
 
 server:
-    port: 8011
+    port: 8090
 
 eureka:
     client:
         service-url:
             defaultZone: "http://localhost:8761/eureka"
-    fetch-registry: true

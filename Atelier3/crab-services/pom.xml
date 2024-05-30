@@ -16,6 +16,7 @@
         <module>saga-orchestrator</module>
         <module>discovery</module>
         <module>core</module>
+        <module>authentication-service</module>
     </modules>
 
     <properties>
