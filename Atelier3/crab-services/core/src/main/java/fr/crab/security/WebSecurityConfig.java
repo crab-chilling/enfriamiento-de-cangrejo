@@ -47,7 +47,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
             httpSecurity
                     .csrf().disable().authorizeHttpRequests(nonAuthenticated ->
-                            nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll())
+                            nonAuthenticated.requestMatchers(HttpMethod.POST, "/login").permitAll()
+                                    .requestMatchers(HttpMethod.POST, "/register").permitAll())
                     .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated())
                     .oauth2ResourceServer().jwt().decoder(jwtDecoder(jwtSecretKey() ));
 

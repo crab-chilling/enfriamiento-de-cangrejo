@@ -54,13 +54,13 @@ public class LoginController {
         return new ResponseEntity<String>("unauthorized", HttpStatus.UNAUTHORIZED);
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
-        Kuser user = authenticationRepository.findByUserName(userDTO.getUserName()).orElse(null);
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<String> register(@RequestBody Kuser kuser) {
+        Kuser user = authenticationRepository.findByUserName(kuser.getUserName()).orElse(null);
         if(user != null){
             return new ResponseEntity<String>("Username already exists", HttpStatus.BAD_REQUEST);
         }
-        authenticationRepository.save(modelMapper.map(userDTO, Kuser.class));
+        authenticationRepository.save(kuser);
         return new ResponseEntity<String>("User created", HttpStatus.CREATED);
     }
 }
