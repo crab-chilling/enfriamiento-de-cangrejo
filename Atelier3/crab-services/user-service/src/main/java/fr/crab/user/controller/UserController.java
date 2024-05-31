@@ -3,7 +3,6 @@ package fr.crab.user.controller;
 
 import fr.crab.dto.UserDTO;
 import fr.crab.entity.Kuser;
-import fr.crab.error.AlreadyExistingException;
 import fr.crab.user.repository.UserRepository;
 import fr.crab.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -20,8 +18,7 @@ public class UserController {
     private final UserRepository userRepository;
 
     private final UserService userService;
-
-
+    
     public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
         this.userService = userService;
@@ -39,23 +36,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<UserDTO> register(@RequestBody UserDTO userDTO) {
         log.info("Registering user");
-        Kuser user = userService.convertToEntity(userDTO);
-        Optional<Kuser> existingUserByEmail = userRepository.findByEmailAddress(user.getEmailAddress());
-
-        if (existingUserByEmail.isPresent()) {
-            throw new AlreadyExistingException("User with email already exists");
-        }
-
-        Optional<Kuser> existingUserByUserName = userRepository.findByUserName(user.getUserName());
-        if (existingUserByUserName.isPresent()) {
-            throw new AlreadyExistingException("User with email already exists");
-        }
-
-        if (user.getRole() == null) {
-            user.setRole("USER");
-        }
-
-        Kuser savedUser = userRepository.save(user);
+        Kuser savedUser = userService.register(userService.convertToEntity(userDTO));
         return ResponseEntity.ok(userService.convertToDTO(savedUser));
     }
 
@@ -65,14 +46,14 @@ public class UserController {
         return ResponseEntity.ok(userService.convertToDTO(userService.getUserInfoById(token)));
     }
 
-//    @GetMapping("/cards")
-//    public List<CardDTO> getUserCards(@RequestHeader(name="Authorization") String token) {
-//        return userService
-//                .getUserInfoById(token)
-//                .getCards()
-//                .stream()
-//                .map(cardService::convertToDTO)
-//                .toList();
-//    }
+    @PatchMapping("/update")
+    public ResponseEntity<UserDTO> updateUser(@RequestHeader(name="Authorization") String token, @RequestBody UserDTO userDTO) {
+        log.info("Updating user info");
+        Kuser user = userService.convertToEntity(userDTO);
+        if (user.getWallet() < 0) {
+            throw new IllegalArgumentException("Wallet cannot be negative");
+        }
+        return ResponseEntity.ok(userService.convertToDTO(userService.save(user)));
+    }
 
 }
