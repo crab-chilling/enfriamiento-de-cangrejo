@@ -2,7 +2,9 @@ package fr.crab.store.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.crab.dto.CardDTO;
 import fr.crab.dto.StoreItemDTO;
+import fr.crab.dto.UserDTO;
 import fr.crab.entity.Card;
 import fr.crab.entity.Kuser;
 import fr.crab.entity.StoreItem;
@@ -39,8 +41,20 @@ public class StoreItemService {
         return modelMapper.map(storeItem, StoreItemDTO.class);
     }
 
+    public CardDTO convertToDTO(Card card) {
+        return modelMapper.map(card, CardDTO.class);
+    }
+
     public StoreItem convertToEntity(StoreItemDTO storeItemDTO) {
         return modelMapper.map(storeItemDTO, StoreItem.class);
+    }
+
+    public Kuser convertToEntity(UserDTO userDTO) {
+        return modelMapper.map(userDTO, Kuser.class);
+    }
+
+    public Card convertToEntity(CardDTO cardDTO) {
+        return modelMapper.map(cardDTO, Card.class);
     }
 
     public StoreItem purchase(String token, Long id) throws IOException {
@@ -65,28 +79,17 @@ public class StoreItemService {
         }
 
         buyer.setWallet(wallet - price);
-        // TODO change this to patch user
-        registerUser(buyer);
+        buyer = this.convertToEntity(this.callUpdateUser(buyer));
         Kuser seller = optItem.get().getUser();
         seller.setWallet(seller.getWallet() + price);
-        // TODO change this to patch user
-        registerUser(seller);
+        seller = this.convertToEntity(this.callUpdateUser(seller));
         storeItemRepository.delete(optItem.get());
         return optItem.get();
     }
 
-    public StoreItem sell(String token, float price, Long id) throws IOException {
-        Mono<String> result = webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .scheme("http")
-                        .host("localhost:8081")
-                        .path("/card")
-                        .queryParam("id", id)
-                        .build())
-                .retrieve()
-                .bodyToMono(String.class);
-        String content = result.block();
-        Card card =  new ObjectMapper().readValue(content, Card.class);
+    public StoreItem sell(String token, float price, Long cardId) throws IOException {
+
+        Card card = fetchCardFromId(cardId);
 
         if (card == null) {
             throw new NotFoundException("Card not found");
@@ -128,8 +131,8 @@ public class StoreItemService {
         return storeItemRepository.findAllByUser(seller);
     }
 
-    private Kuser fetchUserFromId(long id) throws JsonProcessingException {
-        Mono<String> result = webClient.get()
+    private Kuser fetchUserFromId(long id) {
+        Mono<UserDTO> result = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .scheme("http")
                         .host("localhost:8081")
@@ -137,16 +140,28 @@ public class StoreItemService {
                         .queryParam("id", id)
                         .build())
                 .retrieve()
-                .bodyToMono(String.class);
-        String content = result.block();
-        return new ObjectMapper().readValue(content, Kuser.class);
+                .bodyToMono(UserDTO.class);
+        return this.convertToEntity(result.block());
     }
 
-    private void registerUser(Kuser kuser) {
-        webClient.post()
-                .uri("http://localhost:8081/user/register")
+    private Card fetchCardFromId(long id) {
+        Mono<CardDTO> result = webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .scheme("http")
+                        .host("localhost:8081")
+                        .path("/card")
+                        .queryParam("id", id)
+                        .build())
+                .retrieve()
+                .bodyToMono(CardDTO.class);
+        return this.convertToEntity(result.block());
+    }
+
+    private UserDTO callUpdateUser(Kuser kuser) {
+        return webClient.post()
+                .uri("http://localhost:8081/user/update")
                 .header("Content-Type", "application/json")
                 .body(BodyInserters.fromValue(kuser))
-                .retrieve().bodyToMono(String.class).block();
+                .retrieve().bodyToMono(UserDTO.class).block();
     }
 }

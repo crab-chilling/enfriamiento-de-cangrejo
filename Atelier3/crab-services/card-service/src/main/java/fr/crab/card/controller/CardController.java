@@ -5,10 +5,13 @@ import fr.crab.card.service.CardService;
 import fr.crab.dto.CardDTO;
 import fr.crab.entity.Card;
 import fr.crab.error.AlreadyExistingException;
+import fr.crab.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,6 +65,8 @@ public class CardController {
         cardRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+
 
 
 }

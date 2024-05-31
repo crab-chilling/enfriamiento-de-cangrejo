@@ -1,5 +1,6 @@
 package fr.crab.authentication.controller;
 
+import fr.crab.dto.UserDTO;
 import fr.crab.entity.Kuser;
 import fr.crab.repository.AuthenticationRepository;
 import fr.crab.security.SecurityConstants;
@@ -8,33 +9,34 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.TextCodec;
 import io.jsonwebtoken.io.Encoders;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
 import java.util.Date;
 
-@RestController
+@RestController("/")
 @Slf4j
 public class LoginController {
     private AuthenticationManager authenticationManager;
     private AuthenticationRepository authenticationRepository;
 
+    private ModelMapper modelMapper;
+
     LoginController(AuthenticationManager authenticationManager, AuthenticationRepository authenticationRepository){
         this.authenticationManager = authenticationManager;
         this.authenticationRepository = authenticationRepository;
+        this.modelMapper = new ModelMapper();
     }
 
 
-    @RequestMapping(value = "/login", method= RequestMethod.POST)
+    @PostMapping(value = "/login")
     public ResponseEntity<String> login(@RequestBody Kuser kuser) {
         Authentication authenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(kuser.getUserName(), kuser.getPassword());
         Authentication authenticationResponse = authenticationManager.authenticate(authenticationRequest);
@@ -50,5 +52,15 @@ public class LoginController {
             return ResponseEntity.ok(jwt);
         }
         return new ResponseEntity<String>("unauthorized", HttpStatus.UNAUTHORIZED);
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
+        Kuser user = authenticationRepository.findByUserName(userDTO.getUserName()).orElse(null);
+        if(user != null){
+            return new ResponseEntity<String>("Username already exists", HttpStatus.BAD_REQUEST);
+        }
+        authenticationRepository.save(modelMapper.map(userDTO, Kuser.class));
+        return new ResponseEntity<String>("User created", HttpStatus.CREATED);
     }
 }

@@ -8,6 +8,6 @@ import java.io.Serializable;
 public class StoreItemDTO implements Serializable {
     private Long id;
     private CardDTO card;
-    private UserDTO user;
+    private Long user_id;
     private float price;
 }

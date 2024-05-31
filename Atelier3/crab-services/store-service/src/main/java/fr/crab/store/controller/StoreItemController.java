@@ -1,6 +1,7 @@
 package fr.crab.store.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.crab.dto.CardDTO;
 import fr.crab.dto.StoreItemDTO;
 import fr.crab.store.repository.StoreItemRepository;
@@ -49,12 +50,11 @@ public class StoreItemController {
     }
 
     @GetMapping("/seller/{sellerId}")
-    public List<CardDTO> getSellerStoreCards(@PathVariable Long sellerId) {
+    public List<CardDTO> getSellerStoreCards(@PathVariable Long sellerId) throws JsonProcessingException {
         log.info("Getting all store items from seller " + sellerId);
-        return null;
-//        return storeItemService
-//                .getSellerStoreCards(sellerId)
-//                .stream().map(s -> cardService.convertToDTO(s.getCard()))
-//                .toList();
+        return storeItemService
+                .getSellerStoreCards(sellerId)
+                .stream().map(s -> storeItemService.convertToDTO(s.getCard()))
+                .toList();
     }
 }

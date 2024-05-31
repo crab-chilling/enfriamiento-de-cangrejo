@@ -13,6 +13,9 @@ public class GatewayConfiguration {
                 .route("api-auth", routeSpec -> routeSpec
                         .path("/login")
                         .uri("lb://api-authentication-service"))
+                .route("api-auth", routeSpec -> routeSpec
+                        .path("/register")
+                        .uri("lb://api-authentication-service"))
                 .route("api-users", routeSpec -> routeSpec
                         .path("/user/**")
                         .uri("lb://api-user-service"))

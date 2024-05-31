@@ -1,0 +1,9 @@
+{
+    "userName": "admin",
+    "password": "hehe",
+    "emailAddress": "caca@pipi.fr",
+    "role": "user",
+    "firstName": "caca",
+    "wallet": 100.0,
+    "lastName": "caca"
+}
