@@ -135,7 +135,8 @@ public class StoreItemService {
         Mono<UserDTO> result = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .scheme("http")
-                        .host("localhost:8081")
+                        .host("localhost")
+                        .port(8082)
                         .path("/user")
                         .queryParam("id", id)
                         .build())
@@ -148,9 +149,9 @@ public class StoreItemService {
         Mono<CardDTO> result = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .scheme("http")
-                        .host("localhost:8081")
-                        .path("/card")
-                        .queryParam("id", id)
+                        .host("localhost")
+                        .port(8080)
+                        .path("/card/" + id)
                         .build())
                 .retrieve()
                 .bodyToMono(CardDTO.class);
@@ -159,7 +160,7 @@ public class StoreItemService {
 
     private UserDTO callUpdateUser(Kuser kuser) {
         return webClient.post()
-                .uri("http://localhost:8081/user/update")
+                .uri("http://localhost:8082/user/update")
                 .header("Content-Type", "application/json")
                 .body(BodyInserters.fromValue(kuser))
                 .retrieve().bodyToMono(UserDTO.class).block();
