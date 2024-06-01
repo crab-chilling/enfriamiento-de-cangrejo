@@ -26,7 +26,6 @@ import OfflineBoltRoundedIcon from "@mui/icons-material/OfflineBoltRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import SportsMmaRoundedIcon from "@mui/icons-material/SportsMmaRounded";
-import { getUserCardCollection } from "@/api/card";
 import { getUserOnSaleCardCollection, sell } from "@/api/market";
 import { toast } from "react-toastify";
 import { useAuth } from "@/providers/AuthProvider";
@@ -58,7 +57,7 @@ export default function SellTable() {
     setPage(0);
   };
 
-  const handleRowClick = (card: ICard) => {
+  const handleRowClick = (card: ICardWithOnSaleStatus) => {
     setSelectedCard(card);
   };
 
@@ -73,6 +72,12 @@ export default function SellTable() {
         .then((response: IMarketCard | undefined) => {
           if (response) {
             toast.success("Votre annonce a bien été publiée !");
+            const copy = [...cardData];
+            const index = copy.findIndex((c) => c.id === selectedCard.id);
+            if (index !== -1) {
+              copy[index].isOnSale = true;
+            }
+            setCardData(copy);
           }
         })
         .catch((error) => {
@@ -87,8 +92,8 @@ export default function SellTable() {
   useEffect(() => {
     const fetchCardData = async () => {
       try {
-        const userCards = await getUserCardCollection();
-        if (userCards && userContext) {
+        if (userContext) {
+          const userCards = userContext.cards;
           const onSaleCards = await getUserOnSaleCardCollection(userContext.id);
           if (onSaleCards) {
             const onSaleCardIds = new Set(onSaleCards.map((card) => card.id));
