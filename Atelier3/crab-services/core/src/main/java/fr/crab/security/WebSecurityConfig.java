@@ -50,6 +50,7 @@ public class WebSecurityConfig {
                             nonAuthenticated
                                     .requestMatchers(HttpMethod.POST, "/login").permitAll()
                                     .requestMatchers(HttpMethod.POST, "/register").permitAll()
+                                    .requestMatchers(HttpMethod.GET, "/card/generate/**").permitAll()
                                     .requestMatchers(HttpMethod.POST, "/user/register").permitAll())
                     .authorizeHttpRequests(authenticate -> authenticate.anyRequest().authenticated())
                     .oauth2ResourceServer().jwt().decoder(jwtDecoder(jwtSecretKey() ));
