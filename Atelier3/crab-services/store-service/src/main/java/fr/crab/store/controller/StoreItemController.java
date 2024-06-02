@@ -50,10 +50,10 @@ public class StoreItemController {
     }
 
     @GetMapping("/seller/{sellerId}")
-    public List<CardDTO> getSellerStoreCards(@PathVariable Long sellerId) throws JsonProcessingException {
+    public List<CardDTO> getSellerStoreCards(@PathVariable Long sellerId, @PathVariable String token) throws JsonProcessingException {
         log.info("Getting all store items from seller " + sellerId);
         return storeItemService
-                .getSellerStoreCards(sellerId)
+                .getSellerStoreCards(sellerId, token)
                 .stream().map(s -> storeItemService.convertToDTO(s.getCard()))
                 .toList();
     }

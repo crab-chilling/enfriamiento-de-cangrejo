@@ -34,10 +34,10 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> register(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<Kuser> register(@RequestBody Kuser kUser) {
         log.info("Registering user");
-        Kuser savedUser = userService.register(userService.convertToEntity(userDTO));
-        return ResponseEntity.ok(userService.convertToDTO(savedUser));
+        Kuser savedUser = userService.register(kUser);
+        return ResponseEntity.ok(savedUser);
     }
 
     @GetMapping("/")

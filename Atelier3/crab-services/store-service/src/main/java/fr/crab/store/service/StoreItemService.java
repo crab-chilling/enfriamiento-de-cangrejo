@@ -66,7 +66,7 @@ public class StoreItemService {
         String[] chunks = token.split("\\.");
         String base64EncodedBody = chunks[1];
         Long idBuyer = JwtUtils.getJwtIdFromBody(base64EncodedBody, new Base64(true));
-        Kuser buyer = fetchUserFromId(idBuyer);
+        Kuser buyer = fetchUserFromId(idBuyer, token);
         if (buyer == null) {
             throw new NotFoundException("User not found");
         }
@@ -89,7 +89,7 @@ public class StoreItemService {
 
     public StoreItem sell(String token, float price, Long cardId) throws IOException {
 
-        Card card = fetchCardFromId(cardId);
+        Card card = fetchCardFromId(cardId, token);
 
         if (card == null) {
             throw new NotFoundException("Card not found");
@@ -98,7 +98,7 @@ public class StoreItemService {
         String[] chunks = token.split("\\.");
         String base64EncodedBody = chunks[1];
         Long idSeller = JwtUtils.getJwtIdFromBody(base64EncodedBody, new Base64(true));
-        Kuser seller = fetchUserFromId(idSeller);
+        Kuser seller = fetchUserFromId(idSeller, token);
 
         if (seller == null) {
             throw new NotFoundException("User not found");
@@ -121,8 +121,8 @@ public class StoreItemService {
         return storeItemRepository.save(storeItem);
     }
 
-    public List<StoreItem> getSellerStoreCards(Long sellerId) throws JsonProcessingException {
-        Kuser seller = fetchUserFromId(sellerId);
+    public List<StoreItem> getSellerStoreCards(Long sellerId, String token) throws JsonProcessingException {
+        Kuser seller = fetchUserFromId(sellerId, token);
 
         if (seller == null) {
             throw new NotFoundException("User not found");
@@ -131,7 +131,7 @@ public class StoreItemService {
         return storeItemRepository.findAllByUser(seller);
     }
 
-    private Kuser fetchUserFromId(long id) {
+    private Kuser fetchUserFromId(long id, String token) {
         Mono<UserDTO> result = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .scheme("http")
@@ -139,12 +139,13 @@ public class StoreItemService {
                         .path("/user")
                         .queryParam("id", id)
                         .build())
+                .header("Authorization", token)
                 .retrieve()
                 .bodyToMono(UserDTO.class);
         return this.convertToEntity(result.block());
     }
 
-    private Card fetchCardFromId(long id) {
+    private Card fetchCardFromId(long id, String token) {
         Mono<CardDTO> result = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .scheme("http")
@@ -152,6 +153,7 @@ public class StoreItemService {
                         .path("/card")
                         .queryParam("id", id)
                         .build())
+                .header("Authorization", token)
                 .retrieve()
                 .bodyToMono(CardDTO.class);
         return this.convertToEntity(result.block());
