@@ -34,9 +34,9 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<Kuser> register(@RequestBody Kuser kUser) {
+    public ResponseEntity<Kuser> register(@RequestBody Kuser kUser, @RequestHeader(name="Authorization") String token) {
         log.info("Registering user");
-        Kuser savedUser = userService.register(kUser);
+        Kuser savedUser = userService.register(kUser, token);
         return ResponseEntity.ok(savedUser);
     }
 
