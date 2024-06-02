@@ -14,11 +14,11 @@
       <bpmn:incoming>Flow_0ehx8x6</bpmn:incoming>
       <bpmn:outgoing>Flow_1v23ot0</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:serviceTask id="Activity_0381a0e" name="Update Users">
+    <bpmn:serviceTask id="Update_Users" name="Update Users" camunda:delegateExpression="#{updateUsersAdapter}">
       <bpmn:incoming>Flow_1tohk8s</bpmn:incoming>
       <bpmn:outgoing>Flow_16nl7s4</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_14mrym4" name="Update Sold Card">
+    <bpmn:serviceTask id="Update_Sold_Card" name="Update Sold Card" camunda:delegateExpression="#{updateSoldCardAdapter}">
       <bpmn:incoming>Flow_0qdp6ya</bpmn:incoming>
       <bpmn:outgoing>Flow_0ehx8x6</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -37,9 +37,9 @@
     <bpmn:boundaryEvent id="Event_07nhr2t" attachedToRef="Activity_14mrym4">
       <bpmn:compensateEventDefinition id="CompensateEventDefinition_13bxft2" />
     </bpmn:boundaryEvent>
-    <bpmn:serviceTask id="Activity_12arld4" name="Rollback Sold Card Update" isForCompensation="true" />
-    <bpmn:serviceTask id="Activity_15clxei" name="Rollback Users Update" isForCompensation="true" />
-    <bpmn:serviceTask id="Activity_1dqag9i" name="Has User Enough Money ?">
+    <bpmn:serviceTask id="Rollback_Sold_Card_Adapter" name="Rollback Sold Card Update" camunda:delegateExpression="#{rollbackUpdateSoldCardAdapter}" isForCompensation="true" />
+    <bpmn:serviceTask id="Rollback_User_Update" name="Rollback Users Update" isForCompensation="true" camunda:delegateExpression="#{rollbackUpdateUsersAdapter}"/>
+    <bpmn:serviceTask id="Has_User_Enough_Money" name="Has User Enough Money ?" camunda:delegateExpression="#{hasUserEnoughMoneyAdapter}">
       <bpmn:incoming>Flow_074ydd9</bpmn:incoming>
       <bpmn:outgoing>Flow_16lqtxe</bpmn:outgoing>
     </bpmn:serviceTask>

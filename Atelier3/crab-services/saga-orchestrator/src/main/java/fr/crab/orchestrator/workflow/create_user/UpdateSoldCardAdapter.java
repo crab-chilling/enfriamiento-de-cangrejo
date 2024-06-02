@@ -1,4 +1,4 @@
-package fr.crab.orchestrator.service;
+package fr.crab.orchestrator.workflow.create_user;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;

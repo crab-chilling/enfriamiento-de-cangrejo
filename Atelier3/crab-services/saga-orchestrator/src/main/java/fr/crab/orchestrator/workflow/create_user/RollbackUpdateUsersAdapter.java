@@ -1,13 +1,14 @@
-package fr.crab.orchestrator.service;
+package fr.crab.orchestrator.workflow.create_user;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.jvnet.hk2.annotations.Service;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.reactive.function.client.WebClient;
 
-
-public class UpdateUsersAdapter implements JavaDelegate {
+@Service
+public class RollbackUpdateUsersAdapter implements JavaDelegate {
 
     private final WebClient webClient;
 
@@ -16,7 +17,7 @@ public class UpdateUsersAdapter implements JavaDelegate {
 
     private ModelMapper modelMapper;
 
-    public UpdateUsersAdapter() {
+    public RollbackUpdateUsersAdapter() {
         this.modelMapper = new ModelMapper();
         this.webClient = WebClient.create();
     }
