@@ -23,6 +23,7 @@ const cardsData = [
     ),
     description: "Consultez les cartes de votre collection",
     link: "/collection",
+    disabled: false,
   },
   {
     id: 2,
@@ -35,6 +36,7 @@ const cardsData = [
     description:
       "Achetez de nouvelles cartes et ajouter-les à votre collection",
     link: "/buy",
+    disabled: false,
   },
   {
     id: 3,
@@ -42,6 +44,7 @@ const cardsData = [
     icon: <SellIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />,
     description: "Vendez les cartes que vous ne souhaitez plus utiliser",
     link: "/sell",
+    disabled: false,
   },
   {
     id: 4,
@@ -51,6 +54,7 @@ const cardsData = [
     ),
     description: "Combattez en utilisant les cartes de votre collection",
     link: "/rooms",
+    disabled: true,
   },
 ];
 
@@ -80,7 +84,9 @@ export default function Home() {
               </CardContent>
               <CardActions>
                 <Link href={card.link} passHref>
-                  <Button size="small">Accéder</Button>
+                  <Button size="small" disabled={card.disabled}>
+                    Accéder
+                  </Button>
                 </Link>
               </CardActions>
             </Card>

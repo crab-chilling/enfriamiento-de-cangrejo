@@ -14,6 +14,7 @@ export async function getMarketCardCollection(): Promise<
     console.error(error);
   }
 }
+
 export async function getUserOnSaleCardCollection(
   sellerId: number,
 ): Promise<ICard[]> {
