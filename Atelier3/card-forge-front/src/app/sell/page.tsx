@@ -78,6 +78,7 @@ export default function SellTable() {
               copy[index].isOnSale = true;
             }
             setCardData(copy);
+            setSelectedCard(null);
           }
         })
         .catch((error) => {
