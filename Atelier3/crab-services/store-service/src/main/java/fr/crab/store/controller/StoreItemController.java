@@ -50,7 +50,7 @@ public class StoreItemController {
     }
 
     @GetMapping("/seller/{sellerId}")
-    public List<CardDTO> getSellerStoreCards(@PathVariable Long sellerId, @PathVariable String token) throws JsonProcessingException {
+    public List<CardDTO> getSellerStoreCards(@PathVariable Long sellerId, @RequestHeader(name="Authorization") String token) throws JsonProcessingException {
         log.info("Getting all store items from seller " + sellerId);
         return storeItemService
                 .getSellerStoreCards(sellerId, token)
