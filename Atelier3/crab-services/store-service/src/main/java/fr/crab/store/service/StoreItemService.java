@@ -71,6 +71,7 @@ public class StoreItemService {
         String base64EncodedBody = chunks[1];
         Long idBuyer = JwtUtils.getJwtIdFromBody(base64EncodedBody, new Base64(true));
         Kuser buyer = fetchUserFromId(idBuyer, token);
+        Kuser seller = optItem.get().getUser();
         if (buyer == null) {
             throw new NotFoundException("User not found");
         }
@@ -82,15 +83,17 @@ public class StoreItemService {
             throw new NotFoundException("Not enough money");
         }
 
-        buyer.setWallet(wallet - price);
-        buyer = this.convertToEntity(this.callUpdateUser(buyer, token));
-        log.info("Buyer after purchase: " + buyer.toString());
+        if(!buyer.getUserName().equals(seller.getUserName())){
+            buyer.setWallet(wallet - price);
+            buyer = this.convertToEntity(this.callUpdateUser(buyer, token));
+            log.info("Buyer after purchase: " + buyer.toString());
 
-        Kuser seller = optItem.get().getUser();
-        seller.setWallet(seller.getWallet() + price);
-        seller = this.convertToEntity(this.callUpdateUser(seller, token));
-        log.info("Seller after purchase: " + seller.toString());
 
+            seller.setWallet(seller.getWallet() + price);
+            seller = this.convertToEntity(this.callUpdateUser(seller, token));
+            log.info("Seller after purchase: " + seller.toString());
+        }
+        
         storeItemRepository.delete(optItem.get());
         return optItem.get();
     }
