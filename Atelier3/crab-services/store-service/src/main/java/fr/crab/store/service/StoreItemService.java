@@ -84,9 +84,13 @@ public class StoreItemService {
 
         buyer.setWallet(wallet - price);
         buyer = this.convertToEntity(this.callUpdateUser(buyer, token));
+        log.info("Buyer after purchase: " + buyer.toString());
+
         Kuser seller = optItem.get().getUser();
         seller.setWallet(seller.getWallet() + price);
         seller = this.convertToEntity(this.callUpdateUser(seller, token));
+        log.info("Seller after purchase: " + seller.toString());
+
         storeItemRepository.delete(optItem.get());
         return optItem.get();
     }

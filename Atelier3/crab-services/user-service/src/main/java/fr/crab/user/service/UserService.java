@@ -11,16 +11,16 @@ import fr.crab.user.repository.UserRepository;
 import fr.crab.utils.JwtUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.modelmapper.ModelMapper;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -31,6 +31,8 @@ public class UserService {
 
     Random random;
 
+    private static final WebClient webClient = WebClient.create();
+
     public UserService(UserRepository userRepository) {
         this.modelMapper = new ModelMapper();
         this.userRepository = userRepository;
@@ -39,6 +41,10 @@ public class UserService {
 
     public Kuser convertToEntity(UserDTO userDTO) {
         return modelMapper.map(userDTO, Kuser.class);
+    }
+
+    private Card convertToEntity(CardDTO cardDTO) {
+        return modelMapper.map(cardDTO, Card.class);
     }
 
     public UserDTO convertToDTO(Kuser user) {
@@ -73,7 +79,17 @@ public class UserService {
         }
 
         user.setId(existingUser.get().getId());
+        user.setRole(existingUser.get().getRole());
         return userRepository.save(user);
+    }
+
+    private List<CardDTO> fetchAmountOfCard(int count){
+        return webClient.get()
+                .uri("http://localhost:8011/card/generate/" + count)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<CardDTO>>() {
+                })
+                .block();
     }
 
     public Kuser register(Kuser user) {
@@ -93,13 +109,13 @@ public class UserService {
         }
 
         // generate 5 random number that will be the user's card
-        List<Card> listCard = new ArrayList<>();
-        for(int i = 0; i < 5; i++) {
-            Long cardId = this.random.nextLong() % 35;
-            Card card = new Card();
-            card.setId(cardId);
+        List<CardDTO> dtos = this.fetchAmountOfCard(5);
+
+        if(CollectionUtils.isEmpty(dtos)) {
+            throw new NotFoundException("No cards found");
         }
-        user.setCards(listCard);
+
+        user.setCards(dtos.stream().map(this::convertToEntity).toList());
 
         return userRepository.save(user);
     }
