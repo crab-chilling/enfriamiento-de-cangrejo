@@ -66,6 +66,16 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public Kuser update(Kuser user) {
+        Optional<Kuser> existingUser = userRepository.findByUserName(user.getUserName());
+        if(existingUser.isEmpty()) {
+            throw new NotFoundException("User not found");
+        }
+
+        user.setId(existingUser.get().getId());
+        return userRepository.save(user);
+    }
+
     public Kuser register(Kuser user) {
         Optional<Kuser> existingUserByEmail = userRepository.findByEmailAddress(user.getEmailAddress());
 

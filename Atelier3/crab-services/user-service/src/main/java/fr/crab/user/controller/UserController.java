@@ -53,7 +53,7 @@ public class UserController {
         if (user.getWallet() < 0) {
             throw new IllegalArgumentException("Wallet cannot be negative");
         }
-        return ResponseEntity.ok(userService.convertToDTO(userService.save(user)));
+        return ResponseEntity.ok(userService.convertToDTO(userService.update(user)));
     }
 
 }
