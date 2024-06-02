@@ -79,10 +79,10 @@ public class StoreItemService {
         }
 
         buyer.setWallet(wallet - price);
-        buyer = this.convertToEntity(this.callUpdateUser(buyer));
+        buyer = this.convertToEntity(this.callUpdateUser(buyer, token));
         Kuser seller = optItem.get().getUser();
         seller.setWallet(seller.getWallet() + price);
-        seller = this.convertToEntity(this.callUpdateUser(seller));
+        seller = this.convertToEntity(this.callUpdateUser(seller, token));
         storeItemRepository.delete(optItem.get());
         return optItem.get();
     }
@@ -137,8 +137,7 @@ public class StoreItemService {
                         .scheme("http")
                         .host("localhost")
                         .port(8082)
-                        .path("/user")
-                        .queryParam("id", id)
+                        .path("/user/")
                         .build())
                 .header("Authorization", token)
                 .retrieve()
@@ -160,10 +159,11 @@ public class StoreItemService {
         return this.convertToEntity(result.block());
     }
 
-    private UserDTO callUpdateUser(Kuser kuser) {
-        return webClient.post()
+    private UserDTO callUpdateUser(Kuser kuser, String token) {
+        return webClient.patch()
                 .uri("http://localhost:8082/user/update")
                 .header("Content-Type", "application/json")
+                .header("Authorization", token)
                 .body(BodyInserters.fromValue(kuser))
                 .retrieve().bodyToMono(UserDTO.class).block();
     }
