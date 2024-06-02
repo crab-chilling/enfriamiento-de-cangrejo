@@ -109,6 +109,8 @@ public class UserService {
             user.setRole("USER");
         }
 
+        user.setWallet(10);
+
         // generate 5 random number that will be the user's card
         List<CardDTO> dtos = this.fetchAmountOfCard(5);
 

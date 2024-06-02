@@ -68,6 +68,7 @@ export default function BuyTable() {
               cardsCopy.splice(cardIndex, 1);
             }
             setCardData(cardsCopy);
+            setSelectedCard(null);
             refreshUserContext();
             toast.success(
               "Achat effectué ! La carte a été ajouté à votre collection",
