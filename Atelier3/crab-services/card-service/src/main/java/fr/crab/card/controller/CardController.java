@@ -66,6 +66,12 @@ public class CardController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/generate/{count}")
+    public ResponseEntity<List<CardDTO>> generate(@PathVariable int count) {
+        log.info("Generating card");
+        return ResponseEntity.ok(cardService.generate(count).stream().map(cardService::convertToDTO).toList());
+    }
+
 
 
 
