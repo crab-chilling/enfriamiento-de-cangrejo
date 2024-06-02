@@ -49,6 +49,10 @@ public class StoreItemService {
         return modelMapper.map(storeItemDTO, StoreItem.class);
     }
 
+    public UserDTO convertToDTO(Kuser kuser) {
+        return modelMapper.map(kuser, UserDTO.class);
+    }
+
     public Kuser convertToEntity(UserDTO userDTO) {
         return modelMapper.map(userDTO, Kuser.class);
     }
@@ -164,7 +168,7 @@ public class StoreItemService {
                 .uri("http://localhost:8082/user/update")
                 .header("Content-Type", "application/json")
                 .header("Authorization", token)
-                .body(BodyInserters.fromValue(kuser))
+                .body(BodyInserters.fromValue(this.convertToDTO(kuser)))
                 .retrieve().bodyToMono(UserDTO.class).block();
     }
 }
