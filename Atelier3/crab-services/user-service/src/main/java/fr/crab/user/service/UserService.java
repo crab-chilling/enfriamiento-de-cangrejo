@@ -83,16 +83,18 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    private List<CardDTO> fetchAmountOfCard(int count){
+    private List<CardDTO> fetchAmountOfCard(int count, String token){
         return webClient.get()
                 .uri("http://localhost:8011/card/generate/" + count)
+                .header("Content-Type", "application/json")
+                .header("Authorization", token)
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<CardDTO>>() {
                 })
                 .block();
     }
 
-    public Kuser register(Kuser user) {
+    public Kuser register(Kuser user, String token) {
         Optional<Kuser> existingUserByEmail = userRepository.findByEmailAddress(user.getEmailAddress());
 
         if (existingUserByEmail.isPresent()) {
@@ -109,7 +111,7 @@ public class UserService {
         }
 
         // generate 5 random number that will be the user's card
-        List<CardDTO> dtos = this.fetchAmountOfCard(5);
+        List<CardDTO> dtos = this.fetchAmountOfCard(5, token);
 
         if(CollectionUtils.isEmpty(dtos)) {
             throw new NotFoundException("No cards found");
